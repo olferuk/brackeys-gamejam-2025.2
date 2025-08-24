@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://cn8muomcp756l"]
+
+[ext_resource type="FontFile" uid="uid://cuiwhla01q2tp" path="res://vfx/fonts/yoster.ttf" id="1_ntk3x"]
+[ext_resource type="Texture2D" uid="uid://cx2xw7n1pbgfv" path="res://vfx/wasd_hint.png" id="1_vmy67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntk3x"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1pid"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cva5c"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx4ir"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ef0c"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyqqb"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c40kl"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x40o0"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csnoi"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78267"]
+atlas = ExtResource("1_vmy67")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jwxw4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntk3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1pid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cva5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx4ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ef0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyqqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c40kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x40o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csnoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78267")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="ContextHelp" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
+position = Vector2(-32, 0)
+sprite_frames = SubResource("SpriteFrames_jwxw4")
+autoplay = "default"
+frame_progress = 0.305629
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.125911, 0.125911, 0.125911, 1)
+theme_override_fonts/font = ExtResource("1_ntk3x")
+theme_override_font_sizes/font_size = 24
+text = "to move"

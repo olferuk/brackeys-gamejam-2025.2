@@ -5,9 +5,11 @@ extends CanvasLayer
 
 @onready var color_rect: ColorRect = $ColorRect
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var patterns: TextureRect = $Patterns
 
 func _ready() -> void:
 	color_rect.visible = false
+	patterns.visible = false
 
 func load_scene(scene_name: String) -> void:
 	_switch_scene_animated(scene_name)

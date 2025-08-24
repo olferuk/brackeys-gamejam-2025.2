@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3lhwf1ld0eq2"
-path="res://.godot/imported/icon.svg-73bafda0c400b0da1644206e158ff340.ctex"
+uid="uid://u8nfmhqmjjyv"
+path="res://.godot/imported/sky.png-ae7577c802ddaec617f6d7cecc1843e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vfx/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-73bafda0c400b0da1644206e158ff340.ctex"]
+source_file="res://vfx/sky.png"
+dest_files=["res://.godot/imported/sky.png-ae7577c802ddaec617f6d7cecc1843e3.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
