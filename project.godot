@@ -14,6 +14,11 @@ config/name="BrackeysGameJam"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://src/global/global.gd"
+SignalBus="*res://src/global/signal_bus.gd"
+
 [dotnet]
 
 project/assembly_name="BrackeysGameJam"
