@@ -18,6 +18,7 @@ config/icon="res://vfx/icon.svg"
 
 Global="*res://src/global/global.gd"
 SignalBus="*res://src/global/signal_bus.gd"
+Transition="*res://scenes/transition.tscn"
 
 [dotnet]
 
