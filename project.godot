@@ -23,6 +23,15 @@ SignalBus="*res://src/global/signal_bus.gd"
 
 project/assembly_name="BrackeysGameJam"
 
+[file_customization]
+
+folder_colors={
+"res://scenes/": "yellow",
+"res://sfx/": "teal",
+"res://src/": "blue",
+"res://vfx/": "green"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
