@@ -1,7 +1,7 @@
 extends Control
 
-@onready var mouse_hover_sound: AudioStreamPlayer2D = $ButtonsContainer/MouseHoverSound
 @onready var click_sound: AudioStreamPlayer2D = $ButtonsContainer/ClickSound
+@onready var mouse_hover_sound: AudioStreamPlayer2D = $ButtonsContainer/MouseHoverSound
 
 
 func _on_new_game_pressed() -> void:

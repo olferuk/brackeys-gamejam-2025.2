@@ -1,17 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dojcnpqub0xwa"]
+[gd_scene load_steps=9 format=3 uid="uid://dojcnpqub0xwa"]
 
-[ext_resource type="Shader" uid="uid://qh05nsh2qp04" path="res://src/shaders/glider.gdshader" id="1_ekxnf"]
 [ext_resource type="Script" uid="uid://3ihdh0qcjgeg" path="res://src/main_menu.gd" id="1_tbmy8"]
-[ext_resource type="Texture2D" uid="uid://tkjhbbx3v4bq" path="res://vfx/cookie_tiled_icon.png" id="2_bqqt6"]
+[ext_resource type="PackedScene" uid="uid://2q1fn1j0qqqv" path="res://scenes/menu_background.tscn" id="2_oa1go"]
 [ext_resource type="Shader" uid="uid://bomwc7ier3v6e" path="res://src/shaders/sine_float.gdshader" id="3_8ln24"]
 [ext_resource type="Texture2D" uid="uid://cswikx2iughtd" path="res://vfx/title.png" id="3_bqqt6"]
 [ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="3_wu84c"]
 [ext_resource type="AudioStream" uid="uid://36ec8a4kocru" path="res://sfx/wob.mp3" id="6_rtw2f"]
 [ext_resource type="AudioStream" uid="uid://d1w0i1d8duyml" path="res://sfx/crunch.mp3" id="7_oa1go"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekxnf"]
-shader = ExtResource("1_ekxnf")
-shader_parameter/speed = 1.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rtw2f"]
 shader = ExtResource("3_8ln24")
@@ -30,27 +25,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tbmy8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="MenuBackground" parent="." instance=ExtResource("2_oa1go")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.764706, 0.513726, 0.360784, 1)
-
-[node name="Patterns" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.258824)
-texture_repeat = 2
-material = SubResource("ShaderMaterial_ekxnf")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_bqqt6")
-stretch_mode = 1
 
 [node name="TitleContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
