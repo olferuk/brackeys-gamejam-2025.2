@@ -13,3 +13,7 @@ func _on_sound_effects_slider_value_changed(value: float) -> void:
 
 func _on_master_slider_value_changed(value: float) -> void:
 	Global.masterLevel = value
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().change_scene_to_file(Consts.get_scene_name(Consts.SceneName.MAIN_MENU))

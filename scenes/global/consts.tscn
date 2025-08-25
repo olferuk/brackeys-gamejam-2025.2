@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://wehuxepeu0og"]
+
+[ext_resource type="Script" uid="uid://bllwwflu5rxso" path="res://src/global/consts.gd" id="1_qhgiw"]
+
+[node name="Consts" type="Node"]
+script = ExtResource("1_qhgiw")
+scene_main_menu = "res://scenes/ui/main_menu.tscn"
+scene_settings = "res://scenes/ui/settings_menu.tscn"

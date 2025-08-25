@@ -1,15 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://dojcnpqub0xwa"]
 
-[ext_resource type="Script" uid="uid://3ihdh0qcjgeg" path="res://src/main_menu.gd" id="1_tbmy8"]
-[ext_resource type="PackedScene" uid="uid://2q1fn1j0qqqv" path="res://scenes/menu_background.tscn" id="2_oa1go"]
-[ext_resource type="Shader" uid="uid://bomwc7ier3v6e" path="res://src/shaders/sine_float.gdshader" id="3_8ln24"]
-[ext_resource type="Texture2D" uid="uid://cswikx2iughtd" path="res://vfx/title.png" id="3_bqqt6"]
-[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="3_wu84c"]
-[ext_resource type="AudioStream" uid="uid://36ec8a4kocru" path="res://sfx/wob.mp3" id="6_rtw2f"]
-[ext_resource type="AudioStream" uid="uid://d1w0i1d8duyml" path="res://sfx/crunch.mp3" id="7_oa1go"]
+[ext_resource type="Script" uid="uid://3ihdh0qcjgeg" path="res://src/main_menu.gd" id="1_btxxm"]
+[ext_resource type="PackedScene" uid="uid://2q1fn1j0qqqv" path="res://scenes/ui/menu_background.tscn" id="2_wb0q5"]
+[ext_resource type="Shader" uid="uid://bomwc7ier3v6e" path="res://src/shaders/sine_float.gdshader" id="3_q85j6"]
+[ext_resource type="Texture2D" uid="uid://cswikx2iughtd" path="res://vfx/ui/title.png" id="4_8g5eo"]
+[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/resources/dog_theme.tres" id="5_7suek"]
+[ext_resource type="AudioStream" uid="uid://36ec8a4kocru" path="res://sfx/wob.mp3" id="6_otr3d"]
+[ext_resource type="AudioStream" uid="uid://d1w0i1d8duyml" path="res://sfx/crunch.mp3" id="7_8ekit"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rtw2f"]
-shader = ExtResource("3_8ln24")
+shader = ExtResource("3_q85j6")
 shader_parameter/do_abs = false
 shader_parameter/do_quantize = true
 shader_parameter/quantize_to = 1.0
@@ -23,9 +23,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_tbmy8")
+script = ExtResource("1_btxxm")
 
-[node name="MenuBackground" parent="." instance=ExtResource("2_oa1go")]
+[node name="MenuBackground" parent="." instance=ExtResource("2_wb0q5")]
 layout_mode = 1
 
 [node name="TitleContainer" type="VBoxContainer" parent="."]
@@ -46,7 +46,7 @@ layout_mode = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_rtw2f")
 layout_mode = 2
-texture = ExtResource("3_bqqt6")
+texture = ExtResource("4_8g5eo")
 
 [node name="ButtonsContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -61,7 +61,7 @@ offset_right = 89.0
 offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_wu84c")
+theme = ExtResource("5_7suek")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ButtonsContainer"]
 layout_mode = 2
@@ -91,11 +91,11 @@ layout_mode = 2
 text = "Exit"
 
 [node name="MouseHoverSound" type="AudioStreamPlayer2D" parent="ButtonsContainer"]
-stream = ExtResource("6_rtw2f")
-volume_db = -15.0
+stream = ExtResource("6_otr3d")
+volume_db = -6.0
 
 [node name="ClickSound" type="AudioStreamPlayer2D" parent="ButtonsContainer"]
-stream = ExtResource("7_oa1go")
+stream = ExtResource("7_8ekit")
 volume_db = -6.0
 
 [connection signal="mouse_entered" from="ButtonsContainer/VBoxContainer/NewGame" to="." method="_on_new_game_mouse_entered"]

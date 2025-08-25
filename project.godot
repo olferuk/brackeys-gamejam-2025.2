@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
+Consts="*res://scenes/global/consts.tscn"
 Global="*res://src/global/global.gd"
 SignalBus="*res://src/global/signal_bus.gd"
 Transition="*res://scenes/transition.tscn"

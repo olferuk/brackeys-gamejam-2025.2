@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://dogde3fpamwey"]
 
 [ext_resource type="Script" uid="uid://x40hywt55vjb" path="res://src/transition.gd" id="1_rerct"]
-[ext_resource type="Texture2D" uid="uid://tkjhbbx3v4bq" path="res://vfx/cookie_tiled_icon.png" id="2_f0i4t"]
+[ext_resource type="Texture2D" uid="uid://tkjhbbx3v4bq" path="res://vfx/ui/cookie_tiled_icon.png" id="2_f0i4t"]
 [ext_resource type="Shader" uid="uid://qh05nsh2qp04" path="res://src/shaders/glider.gdshader" id="2_px735"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xmi56"]
 shader = ExtResource("2_px735")
-shader_parameter/speed_x = 0.6
-shader_parameter/speed_y = 1.2
+shader_parameter/speed_x = 0.4
+shader_parameter/speed_y = 0.6
 
 [sub_resource type="Animation" id="Animation_kg4ax"]
 resource_name = "FadeIn"
@@ -32,6 +32,18 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.00298445, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Patterns:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.00304687, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, true]
@@ -63,6 +75,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Patterns:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rerct"]
 _data = {
@@ -84,6 +108,7 @@ size_flags_vertical = 4
 color = Color(0.298266, 0.034814, 0.286238, 1)
 
 [node name="Patterns" type="TextureRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.258824)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_xmi56")

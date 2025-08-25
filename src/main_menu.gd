@@ -4,11 +4,14 @@ extends Control
 @onready var mouse_hover_sound: AudioStreamPlayer2D = $ButtonsContainer/MouseHoverSound
 
 
+
 func _on_new_game_pressed() -> void:
 	play_sound(click_sound)
-
+	
 func _on_settings_pressed() -> void:
 	play_sound(click_sound)
+	#Transition.load_scene(Consts.get_scene_name(Consts.SceneName.SETTINGS))
+	get_tree().change_scene_to_file(Consts.get_scene_name(Consts.SceneName.SETTINGS))
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

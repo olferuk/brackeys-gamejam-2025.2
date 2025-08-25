@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cswikx2iughtd"
-path="res://.godot/imported/title.png-a427e1f6be24067fe13d3d4953286757.ctex"
+uid="uid://cqgui1j7rnbqd"
+path="res://.godot/imported/knob_2.png-79e9e4e835d4de8f124f26c2a179063b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vfx/title.png"
-dest_files=["res://.godot/imported/title.png-a427e1f6be24067fe13d3d4953286757.ctex"]
+source_file="res://vfx/ui/knob_2.png"
+dest_files=["res://.godot/imported/knob_2.png-79e9e4e835d4de8f124f26c2a179063b.ctex"]
 
 [params]
 
