@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://kv5hrut8ubdx"]
+
+[ext_resource type="FontFile" uid="uid://coxv3nhl2anfj" path="res://vfx/fonts/dpcomic.ttf" id="1_h6epi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0e86"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_h6epi")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_w0e86")

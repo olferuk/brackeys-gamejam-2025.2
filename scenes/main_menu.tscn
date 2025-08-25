@@ -1,11 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://dojcnpqub0xwa"]
+[gd_scene load_steps=11 format=3 uid="uid://dojcnpqub0xwa"]
 
 [ext_resource type="Shader" uid="uid://qh05nsh2qp04" path="res://src/shaders/glider.gdshader" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://3ihdh0qcjgeg" path="res://src/main_menu.gd" id="1_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://tkjhbbx3v4bq" path="res://vfx/cookie_tiled_icon.png" id="2_bqqt6"]
+[ext_resource type="Shader" uid="uid://bomwc7ier3v6e" path="res://src/shaders/sine_float.gdshader" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cswikx2iughtd" path="res://vfx/title.png" id="3_bqqt6"]
+[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="3_wu84c"]
+[ext_resource type="AudioStream" uid="uid://36ec8a4kocru" path="res://sfx/wob.mp3" id="6_rtw2f"]
+[ext_resource type="AudioStream" uid="uid://d1w0i1d8duyml" path="res://sfx/crunch.mp3" id="7_oa1go"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ekxnf"]
 shader = ExtResource("1_ekxnf")
 shader_parameter/speed = 1.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtw2f"]
+shader = ExtResource("3_8ln24")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = true
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(0, 8)
+shader_parameter/sine_speed = Vector2(0, 2)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -14,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tbmy8")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -36,3 +51,80 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_bqqt6")
 stretch_mode = 1
+
+[node name="TitleContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -177.0
+offset_right = 177.0
+offset_bottom = 272.0
+grow_horizontal = 2
+
+[node name="Control" type="Control" parent="TitleContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Title" type="TextureRect" parent="TitleContainer"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_rtw2f")
+layout_mode = 2
+texture = ExtResource("3_bqqt6")
+
+[node name="ButtonsContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -81.0
+offset_right = 89.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wu84c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonsContainer"]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="ButtonsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="ButtonsContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Spacer1" type="Control" parent="ButtonsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="ButtonsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Spacer2" type="Control" parent="ButtonsContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="ButtonsContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="MouseHoverSound" type="AudioStreamPlayer2D" parent="ButtonsContainer"]
+stream = ExtResource("6_rtw2f")
+volume_db = -15.0
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="ButtonsContainer"]
+stream = ExtResource("7_oa1go")
+volume_db = -6.0
+
+[connection signal="mouse_entered" from="ButtonsContainer/VBoxContainer/NewGame" to="." method="_on_new_game_mouse_entered"]
+[connection signal="pressed" from="ButtonsContainer/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="ButtonsContainer/VBoxContainer/Settings" to="." method="_on_settings_mouse_entered"]
+[connection signal="pressed" from="ButtonsContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="ButtonsContainer/VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="pressed" from="ButtonsContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
