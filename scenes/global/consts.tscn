@@ -6,3 +6,4 @@
 script = ExtResource("1_qhgiw")
 scene_main_menu = "res://scenes/ui/main_menu.tscn"
 scene_settings = "res://scenes/ui/settings_menu.tscn"
+scene_level_01 = "res://scenes/levels/level01.tscn"
