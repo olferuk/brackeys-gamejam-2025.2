@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtvv1vd08dxpi"]
+[gd_scene load_steps=11 format=3 uid="uid://dtvv1vd08dxpi"]
 
 [ext_resource type="Script" uid="uid://806q2dyjqodo" path="res://src/hound.gd" id="1_20k3t"]
 [ext_resource type="Texture2D" uid="uid://dd7eban8qfw4j" path="res://vfx/dog.png" id="2_ampte"]
 [ext_resource type="Resource" uid="uid://nc18bomblhw7" path="res://scenes/player/body_schema.tres" id="2_xekb5"]
+[ext_resource type="AudioStream" uid="uid://d0af5ud87ke5m" path="res://sfx/expand.mp3" id="4_iw5is"]
+[ext_resource type="AudioStream" uid="uid://bggrf25ta24qd" path="res://sfx/shrink.mp3" id="5_p2wvy"]
+[ext_resource type="AudioStream" uid="uid://bwby3h542gcwm" path="res://sfx/error-[AudioTrimmer.com] (1).mp3" id="6_p2wvy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xekb5"]
 texture = ExtResource("2_ampte")
@@ -48,3 +51,14 @@ tile_set = SubResource("TileSet_og5jt")
 tile_set = SubResource("TileSet_p2wvy")
 
 [node name="BodySections" type="Node2D" parent="."]
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="StretchSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_iw5is")
+
+[node name="ShrinkSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_p2wvy")
+
+[node name="ErrorSound" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_p2wvy")

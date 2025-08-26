@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://u8nfmhqmjjyv" path="res://vfx/levels/sky.png" id="1_g0jr5"]
 [ext_resource type="Texture2D" uid="uid://75q5ne5hh4as" path="res://vfx/levels/ground-spritesheet.png" id="2_i4uh8"]
 [ext_resource type="PackedScene" uid="uid://cn8muomcp756l" path="res://scenes/ui/context_help.tscn" id="3_qwlqn"]
-[ext_resource type="PackedScene" uid="uid://dn4oa1fk48to4" path="res://scenes/player/player.tscn" id="4_i4uh8"]
+[ext_resource type="PackedScene" uid="uid://dtvv1vd08dxpi" path="res://scenes/player/hound.tscn" id="4_i4uh8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5qli"]
 texture = ExtResource("2_i4uh8")
@@ -219,8 +219,8 @@ offset_top = 64.0
 offset_right = 616.0
 offset_bottom = 88.0
 
-[node name="Player" parent="." instance=ExtResource("4_i4uh8")]
-position = Vector2(352, 96)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 320)
+
+[node name="Hound" parent="." instance=ExtResource("4_i4uh8")]
+position = Vector2(224, 96)
