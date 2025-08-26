@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t2yrofkqbcl1"
-path="res://.godot/imported/Snake_spritesheet.png-04627a1a331007a91e16e928c08341b9.ctex"
+uid="uid://u8nfmhqmjjyv"
+path="res://.godot/imported/sky.png-89ad54d3c948426a932e48e484a10569.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vfx/Snake_spritesheet.png"
-dest_files=["res://.godot/imported/Snake_spritesheet.png-04627a1a331007a91e16e928c08341b9.ctex"]
+source_file="res://vfx/levels/sky.png"
+dest_files=["res://.godot/imported/sky.png-89ad54d3c948426a932e48e484a10569.ctex"]
 
 [params]
 

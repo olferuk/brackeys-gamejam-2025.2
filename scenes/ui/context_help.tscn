@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cn8muomcp756l"]
 
 [ext_resource type="Texture2D" uid="uid://cx2xw7n1pbgfv" path="res://vfx/ui/wasd_hint.png" id="1_vmy67"]
-[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/resources/dog_theme.tres" id="2_fw2f3"]
+[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="2_fw2f3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ntk3x"]
 atlas = ExtResource("1_vmy67")

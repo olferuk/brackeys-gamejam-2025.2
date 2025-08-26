@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cd52bsfpk2xnq" path="res://src/settings_menu.gd" id="1_0b1cv"]
 [ext_resource type="PackedScene" uid="uid://2q1fn1j0qqqv" path="res://scenes/ui/menu_background.tscn" id="2_yu862"]
-[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/resources/dog_theme.tres" id="3_ywggk"]
+[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="3_ywggk"]
 [ext_resource type="FontFile" uid="uid://cledngpla3142" path="res://vfx/fonts/Tanker-Regular.otf" id="4_ngbvi"]
 
 [node name="SettingsMenu" type="Control"]

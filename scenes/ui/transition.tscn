@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://dogde3fpamwey"]
 
-[ext_resource type="Script" uid="uid://x40hywt55vjb" path="res://src/transition.gd" id="1_rerct"]
-[ext_resource type="Texture2D" uid="uid://tkjhbbx3v4bq" path="res://vfx/ui/cookie_tiled_icon.png" id="2_f0i4t"]
-[ext_resource type="Shader" uid="uid://qh05nsh2qp04" path="res://src/shaders/glider.gdshader" id="2_px735"]
+[ext_resource type="Script" uid="uid://x40hywt55vjb" path="res://src/transition.gd" id="1_ghw5a"]
+[ext_resource type="Shader" uid="uid://qh05nsh2qp04" path="res://src/shaders/glider.gdshader" id="2_c27ap"]
+[ext_resource type="Texture2D" uid="uid://tkjhbbx3v4bq" path="res://vfx/ui/cookie_tiled_icon.png" id="3_mpjqm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xmi56"]
-shader = ExtResource("2_px735")
+shader = ExtResource("2_c27ap")
 shader_parameter/speed_x = 0.4
 shader_parameter/speed_y = 0.6
 
@@ -95,7 +95,7 @@ _data = {
 }
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_rerct")
+script = ExtResource("1_ghw5a")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -117,7 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_f0i4t")
+texture = ExtResource("3_mpjqm")
 stretch_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

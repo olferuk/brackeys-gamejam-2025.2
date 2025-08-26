@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtvv1vd08dxpi"]
+
+[ext_resource type="Script" uid="uid://806q2dyjqodo" path="res://src/hound.gd" id="1_20k3t"]
+[ext_resource type="Texture2D" uid="uid://dd7eban8qfw4j" path="res://vfx/dog.png" id="2_ampte"]
+[ext_resource type="Resource" uid="uid://nc18bomblhw7" path="res://scenes/player/body_schema.tres" id="2_xekb5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xekb5"]
+texture = ExtResource("2_ampte")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_og5jt"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_xekb5")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iw5is"]
+texture = ExtResource("2_ampte")
+texture_region_size = Vector2i(64, 64)
+2:2/0 = 0
+3:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p2wvy"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_iw5is")
+
+[node name="Hound" type="Node2D"]
+script = ExtResource("1_20k3t")
+body_schema = ExtResource("2_xekb5")
+
+[node name="DogBodyLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_og5jt")
+
+[node name="FrontLegs" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_p2wvy")
+
+[node name="BodySections" type="Node2D" parent="."]

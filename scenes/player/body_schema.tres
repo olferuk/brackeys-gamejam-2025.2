@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BodySchema" load_steps=2 format=3 uid="uid://nc18bomblhw7"]
+
+[ext_resource type="Script" uid="uid://d2vtift18e3p4" path="res://resources/body_schema.gd" id="1_n3lhn"]
+
+[resource]
+script = ExtResource("1_n3lhn")
+tail_left = Vector2i(3, 0)
+tail_right = Vector2i(4, 0)
+tail_up = Vector2i(5, 0)
+tail_down = Vector2i(6, 0)
+head_left = Vector2i(3, 1)
+head_right = Vector2i(4, 1)
+head_up = Vector2i(5, 1)
+head_down = Vector2i(6, 1)
+body_h = Vector2i(0, 1)
+body_v = Vector2i(0, 2)
+body_c1100 = Vector2i(1, 0)
+body_c0110 = Vector2i(2, 0)
+body_c0011 = Vector2i(2, 1)
+body_c1001 = Vector2i(1, 1)
+metadata/_custom_type_script = "uid://d2vtift18e3p4"

@@ -1,35 +1,34 @@
 extends Node
 
-
 #var gameSpeed: float = 1.0
-
-var cellSize: float = 64
+var paused: bool = false
+var cell_size: float = 64.0
 
 #region Audio
 
-var _masterLevel: float = 1.0
-var _musicLevel: float = 1.0
-var _soundLevel: float = 1.0
+var _master_level: float = 1.0
+var _music_level: float = 1.0
+var _sound_level: float = 1.0
 
-var masterLevel:
+var master_level:
 	get:
-		return _masterLevel
+		return _master_level
 	set(value):
-		_masterLevel = clamp(value, 0, 1)
+		_master_level = clamp(value, 0, 1)
 		apply_audio()
 
-var musicLevel:
+var music_level:
 	get:
-		return _musicLevel
+		return _music_level
 	set(value):
-		_musicLevel = clamp(value, 0, 1)
+		_music_level = clamp(value, 0, 1)
 		apply_audio()
 
-var soundLevel:
+var sound_level:
 	get:
-		return _soundLevel
+		return _sound_level
 	set(value):
-		_soundLevel = clamp(value, 0, 1)
+		_sound_level = clamp(value, 0, 1)
 		apply_audio()
 
 func _linear_to_db_safe(v: float) -> float:
@@ -42,8 +41,8 @@ func apply_audio():
 	var music_idx := AudioServer.get_bus_index("Music")
 	var sfx_idx := AudioServer.get_bus_index("SoundEffects")
 
-	AudioServer.set_bus_volume_db(master_idx, _linear_to_db_safe(masterLevel))
-	AudioServer.set_bus_volume_db(music_idx,  _linear_to_db_safe(musicLevel))
-	AudioServer.set_bus_volume_db(sfx_idx,    _linear_to_db_safe(soundLevel))
+	AudioServer.set_bus_volume_db(master_idx, _linear_to_db_safe(master_level))
+	AudioServer.set_bus_volume_db(music_idx, _linear_to_db_safe(music_level))
+	AudioServer.set_bus_volume_db(sfx_idx, _linear_to_db_safe(sound_level))
 
 #endregion

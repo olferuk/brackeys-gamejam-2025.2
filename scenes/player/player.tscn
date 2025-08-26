@@ -13,4 +13,5 @@ script = ExtResource("1_qhqgy")
 texture = ExtResource("2_dqkch")
 
 [node name="HeadSprite" type="Sprite2D" parent="."]
+position = Vector2(0.197842, 0)
 texture = ExtResource("3_qlg0r")
