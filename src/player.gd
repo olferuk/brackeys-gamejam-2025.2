@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var cell_size := 64
 @export var min_length := 3
 @export var max_length := 5
 @export var move_speed := 5.0      # higher = faster interpolation
@@ -20,14 +19,14 @@ func _ready() -> void:
 	var start = Vector2i(0, 0)
 	for i in range(min_length):
 		body_cells.append(start + Vector2i(-i, 0))  # horizontal: X decreases
-		body_cells_visual.append(Vector2((start.x - i) * cell_size, start.y * cell_size))
+		body_cells_visual.append(Vector2((start.x - i) * Global.cellSize, start.y * Global.cellSize))
 	_update_polygon(body_cells_visual, 0.0)
 	print(body_cells_visual)
 
 func _process(delta: float) -> void:
 	# Smoothly interpolate body segments to grid positions
 	for i in range(body_cells.size()):
-		var target = Vector2(body_cells[i].x * cell_size, body_cells[i].y * cell_size)
+		var target = Vector2(body_cells[i].x * Global.cellSize, body_cells[i].y * Global.cellSize)
 		body_cells_visual[i] = body_cells_visual[i].lerp(target, move_speed * delta)
 
 	# Apply squash/stretch
@@ -102,9 +101,9 @@ func shrink() -> void:
 	moving = false
 
 # --- polygon update ---
-func _update_polygon(positions: Array[Vector2], stretch: float) -> void:
+func _update_polygon(positions: Array[Vector2], stretch_value: float) -> void:
 	var poly: Array[Vector2] = []
-	var half_width = cell_size / 2.0
+	var half_width = Global.cellSize / 2.0
 
 	if positions.size() < 2:
 		return
@@ -125,9 +124,9 @@ func _update_polygon(positions: Array[Vector2], stretch: float) -> void:
 
 		var normal = dir.normalized().orthogonal()  # perpendicular to spine
 		var t = float(i) / float(positions.size() - 1)
-		var scale = lerp(1.0 + stretch * 0.5, 1.0, t)
-		top_points.append(p + normal * half_width * scale)
-		bottom_points.append(p - normal * half_width * scale)
+		var scale_value = lerp(1.0 + stretch_value * 0.5, 1.0, t)
+		top_points.append(p + normal * half_width * scale_value)
+		bottom_points.append(p - normal * half_width * scale_value)
 
 	# Build polygon: top edge forward, bottom edge backward
 	for p in top_points:

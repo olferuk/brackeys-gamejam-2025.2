@@ -2,7 +2,6 @@ extends Node2D
 
 @export var min_height := 3
 @export var max_height := 5
-@export var cell_size := 64
 @export var segment_texture: Texture2D
 
 @onready var segments := $Segments
@@ -14,8 +13,8 @@ var stretching := false
 func _ready() -> void:
 	_rebuild_segments()
 	# Snap to grid
-	player_cell = Vector2i(round(position.x / cell_size), round(position.y / cell_size))
-	position = player_cell * cell_size
+	player_cell = Vector2i(round(position.x / Global.cellSize), round(position.y / Global.cellSize))
+	position = player_cell * Global.cellSize
 
 func _unhandled_input(event: InputEvent) -> void:
 	#if stretching:
@@ -36,13 +35,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("move_right"):
 		try_move(Vector2i.RIGHT)
 
+func try_move(dir: Vector2i) -> void:
+	var target_cell = player_cell + dir
+	# For now no walls → just move
+	player_cell = target_cell
+	var dest = player_cell * Global.cellSize
+	#var tw = create_tween()
+	#tw.tween_property(self, "position", dest, 0.15)
+
 func _rebuild_segments() -> void:
 	for c in segments.get_children():
 		c.queue_free()
 	for i in range(current_height):
 		var spr := Sprite2D.new()
 		spr.texture = segment_texture
-		spr.position = Vector2(0, -i * cell_size)
+		spr.position = Vector2(0, -i * Global.cellSize)
 		segments.add_child(spr)
 
 func stretch_to(new_height: int) -> void:
@@ -52,11 +59,11 @@ func stretch_to(new_height: int) -> void:
 		for i in range(current_height, new_height):
 			var spr := Sprite2D.new()
 			spr.texture = segment_texture
-			spr.position = Vector2(0, -(i+1) * cell_size) + Vector2(0, cell_size)
+			spr.position = Vector2(0, -(i+1) * Global.cellSize) + Vector2(0, Global.cellSize)
 			spr.scale = Vector2(1, 0.1)
 			segments.add_child(spr)
 			var tw := create_tween()
-			tw.tween_property(spr, "position", Vector2(0, -i * cell_size), 0.2)
+			tw.tween_property(spr, "position", Vector2(0, -i * Global.cellSize), 0.2)
 			tw.parallel().tween_property(spr, "scale", Vector2(1, 1), 0.2)
 			await tw.finished
 	else:
@@ -68,14 +75,5 @@ func stretch_to(new_height: int) -> void:
 			tw.parallel().tween_property(spr, "modulate:a", 0.0, 0.2)
 			await tw.finished
 			spr.queue_free()
-
 	current_height = new_height
 	stretching = false
-
-func try_move(dir: Vector2i) -> void:
-	var target_cell = player_cell + dir
-	# For now no walls → just move
-	player_cell = target_cell
-	var dest = player_cell * cell_size
-	#var tw = create_tween()
-	#tw.tween_property(self, "position", dest, 0.15)

@@ -5,6 +5,8 @@ var rng: RandomNumberGenerator
 # var managers: ....
 var gameSpeed: float = 1.0
 
+var cellSize: float = 64
+
 # Sound levels
 var masterLevel: float = 1.0
 var musicLevel: float = 1.0

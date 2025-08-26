@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://7ve7daq1umgj"]
 
-[ext_resource type="Texture2D" uid="uid://t2yrofkqbcl1" path="res://snake/Graphics/Snake_spritesheet.png" id="1_j2kkt"]
+[ext_resource type="Texture2D" uid="uid://t2yrofkqbcl1" path="res://vfx/Snake_spritesheet.png" id="1_j2kkt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opl32"]
 
