@@ -1,8 +1,7 @@
 extends Node
 
-# var main: Main Scene
-var rng: RandomNumberGenerator
-var gameSpeed: float = 1.0
+
+#var gameSpeed: float = 1.0
 
 var cellSize: float = 64
 
