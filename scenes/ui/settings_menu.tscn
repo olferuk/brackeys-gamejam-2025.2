@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfh51kiodwg2w"]
+[gd_scene load_steps=5 format=3 uid="uid://cfh51kiodwg2w"]
 
-[ext_resource type="PackedScene" uid="uid://2q1fn1j0qqqv" path="res://scenes/menu_background.tscn" id="1_05p07"]
-[ext_resource type="Script" uid="uid://cd52bsfpk2xnq" path="res://src/settings_menu.gd" id="1_wswnh"]
-[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="2_cr101"]
+[ext_resource type="Script" uid="uid://cd52bsfpk2xnq" path="res://src/settings_menu.gd" id="1_0b1cv"]
+[ext_resource type="PackedScene" uid="uid://2q1fn1j0qqqv" path="res://scenes/ui/menu_background.tscn" id="2_yu862"]
+[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/resources/dog_theme.tres" id="3_ywggk"]
+[ext_resource type="FontFile" uid="uid://cledngpla3142" path="res://vfx/fonts/Tanker-Regular.otf" id="4_ngbvi"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -11,9 +12,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wswnh")
+script = ExtResource("1_0b1cv")
 
-[node name="MenuBackground" parent="." instance=ExtResource("1_05p07")]
+[node name="MenuBackground" parent="." instance=ExtResource("2_yu862")]
 layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -31,8 +32,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
+texture_filter = 5
 layout_mode = 2
-theme = ExtResource("2_cr101")
+theme = ExtResource("3_ywggk")
+theme_override_fonts/font = ExtResource("4_ngbvi")
 theme_override_font_sizes/font_size = 54
 text = "Settings"
 horizontal_alignment = 1
@@ -47,17 +50,21 @@ alignment = 2
 
 [node name="MasterLabel" type="Label" parent="VBoxContainer/MasterContainer"]
 layout_mode = 2
-theme = ExtResource("2_cr101")
+theme = ExtResource("3_ywggk")
 text = "Master"
 
 [node name="Control" type="Control" parent="VBoxContainer/MasterContainer"]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 
-[node name="MasterSlider" type="HSlider" parent="VBoxContainer/MasterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MasterContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MasterSlider" type="HSlider" parent="VBoxContainer/MasterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-theme = ExtResource("2_cr101")
+theme = ExtResource("3_ywggk")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -68,21 +75,28 @@ layout_mode = 2
 
 [node name="MusicContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 alignment = 2
 
 [node name="MusicLabel" type="Label" parent="VBoxContainer/MusicContainer"]
 layout_mode = 2
-theme = ExtResource("2_cr101")
+theme = ExtResource("3_ywggk")
 text = "Music"
 
 [node name="Control" type="Control" parent="VBoxContainer/MusicContainer"]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 
-[node name="MusicSlider" type="HSlider" parent="VBoxContainer/MusicContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MusicContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/MusicContainer/VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-theme = ExtResource("2_cr101")
+theme = ExtResource("3_ywggk")
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -96,21 +110,25 @@ layout_mode = 2
 
 [node name="SfxLabel" type="Label" parent="VBoxContainer/SoundEffectsContainer"]
 layout_mode = 2
-theme = ExtResource("2_cr101")
+theme = ExtResource("3_ywggk")
 text = "Sound Effects"
 
 [node name="Control" type="Control" parent="VBoxContainer/SoundEffectsContainer"]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 
-[node name="SoundEffectsSlider" type="HSlider" parent="VBoxContainer/SoundEffectsContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/SoundEffectsContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="SoundEffectsSlider" type="HSlider" parent="VBoxContainer/SoundEffectsContainer/VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
-theme = ExtResource("2_cr101")
+theme = ExtResource("3_ywggk")
 max_value = 1.0
 step = 0.01
 value = 1.0
 
-[connection signal="value_changed" from="VBoxContainer/MasterContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/MusicContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/SoundEffectsContainer/SoundEffectsSlider" to="." method="_on_sound_effects_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MasterContainer/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MusicContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SoundEffectsContainer/VBoxContainer/SoundEffectsSlider" to="." method="_on_sound_effects_slider_value_changed"]

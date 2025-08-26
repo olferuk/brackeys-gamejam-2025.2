@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://cn8muomcp756l"]
 
-[ext_resource type="FontFile" uid="uid://cuiwhla01q2tp" path="res://vfx/fonts/yoster.ttf" id="1_ntk3x"]
-[ext_resource type="Texture2D" uid="uid://cx2xw7n1pbgfv" path="res://vfx/wasd_hint.png" id="1_vmy67"]
+[ext_resource type="Texture2D" uid="uid://cx2xw7n1pbgfv" path="res://vfx/ui/wasd_hint.png" id="1_vmy67"]
+[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/resources/dog_theme.tres" id="2_fw2f3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ntk3x"]
 atlas = ExtResource("1_vmy67")
@@ -93,14 +93,13 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
-position = Vector2(-32, 0)
+position = Vector2(-37, 0)
 sprite_frames = SubResource("SpriteFrames_jwxw4")
 autoplay = "default"
 frame_progress = 0.305629
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.125911, 0.125911, 0.125911, 1)
-theme_override_fonts/font = ExtResource("1_ntk3x")
+theme = ExtResource("2_fw2f3")
 theme_override_font_sizes/font_size = 24
 text = "to move"

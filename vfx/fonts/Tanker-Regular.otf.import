@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cuiwhla01q2tp"
-path="res://.godot/imported/yoster.ttf-f30fbf25844faabc9005dd6ab7f86637.fontdata"
+uid="uid://cledngpla3142"
+path="res://.godot/imported/Tanker-Regular.otf-ec1db1ca15be9a5a2c4a0d6b480cb3f5.fontdata"
 
 [deps]
 
-source_file="res://vfx/fonts/yoster.ttf"
-dest_files=["res://.godot/imported/yoster.ttf-f30fbf25844faabc9005dd6ab7f86637.fontdata"]
+source_file="res://vfx/fonts/Tanker-Regular.otf"
+dest_files=["res://.godot/imported/Tanker-Regular.otf-ec1db1ca15be9a5a2c4a0d6b480cb3f5.fontdata"]
 
 [params]
 

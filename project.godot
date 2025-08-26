@@ -11,11 +11,12 @@ config_version=5
 [application]
 
 config/name="BrackeysGameJam"
-run/main_scene="uid://dx4q81jhs7kss"
+run/main_scene="uid://dojcnpqub0xwa"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [autoload]
 
+Consts="*res://scenes/global/consts.tscn"
 Global="*res://src/global/global.gd"
 SignalBus="*res://src/global/signal_bus.gd"
 Transition="*res://scenes/transition.tscn"

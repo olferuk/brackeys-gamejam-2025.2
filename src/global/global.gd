@@ -2,15 +2,36 @@ extends Node
 
 # var main: Main Scene
 var rng: RandomNumberGenerator
-# var managers: ....
 var gameSpeed: float = 1.0
 
 var cellSize: float = 64
 
-# Sound levels
-var masterLevel: float = 1.0
-var musicLevel: float = 1.0
-var soundLevel: float = 1.0
+#region Audio
+
+var _masterLevel: float = 1.0
+var _musicLevel: float = 1.0
+var _soundLevel: float = 1.0
+
+var masterLevel:
+	get:
+		return _masterLevel
+	set(value):
+		_masterLevel = clamp(value, 0, 1)
+		apply_audio()
+
+var musicLevel:
+	get:
+		return _musicLevel
+	set(value):
+		_musicLevel = clamp(value, 0, 1)
+		apply_audio()
+
+var soundLevel:
+	get:
+		return _soundLevel
+	set(value):
+		_soundLevel = clamp(value, 0, 1)
+		apply_audio()
 
 func _linear_to_db_safe(v: float) -> float:
 	if v <= 0.0:
@@ -25,3 +46,5 @@ func apply_audio():
 	AudioServer.set_bus_volume_db(master_idx, _linear_to_db_safe(masterLevel))
 	AudioServer.set_bus_volume_db(music_idx,  _linear_to_db_safe(musicLevel))
 	AudioServer.set_bus_volume_db(sfx_idx,    _linear_to_db_safe(soundLevel))
+
+#endregion
