@@ -223,4 +223,4 @@ offset_bottom = 88.0
 position = Vector2(576, 320)
 
 [node name="Hound" parent="." instance=ExtResource("4_i4uh8")]
-position = Vector2(224, 96)
+position = Vector2(192, 128)
