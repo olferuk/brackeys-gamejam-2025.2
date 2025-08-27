@@ -96,16 +96,25 @@ func _clone_sections() -> Array[Sprite2D]:
 			arr.append(spr)
 	return arr
 
-func _restore_state(hc: Vector2i, pd: Vector2i, occ: Array[Vector2i], sections: Array[Sprite2D]):
+func _restore_state(
+	hc: Vector2i,
+	pd: Vector2i,
+	occ: Array[Vector2i],
+	sects: Array[Sprite2D],
+	seg: Array[Vector2i]
+):
 	head_coords = hc
 	prev_direction = pd
 	occupied_cells = occ.duplicate(true)
+	segments = seg.duplicate(true)
+	current_length = segments.size()
 
 	for child in body_sections.get_children():
 		body_sections.remove_child(child)
 		child.queue_free()
 
-	for spr in sections:
+	# Restore cloned sprites
+	for spr in sects:
 		body_sections.add_child(spr)
 
 func undo_last():
