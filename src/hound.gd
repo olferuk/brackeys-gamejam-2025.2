@@ -62,7 +62,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var cmd := ShrinkCommand.new()
 		cmd.execute(self)
 		history.append(cmd)
-
+	#$Sounds/ShrinkSound.play()
 	if event.is_action_pressed("Undo"):
 		undo_last()
 
