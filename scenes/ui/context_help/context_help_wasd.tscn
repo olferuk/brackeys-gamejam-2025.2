@@ -13,8 +13,8 @@ anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 script = ExtResource("1_hlxk6")
-time = 0.6
-amplitude = 0.05
+time = 1.0
+amplitude = 0.02
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(64, 0)
