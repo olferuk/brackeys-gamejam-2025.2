@@ -76,7 +76,15 @@ func _clone_sections() -> Array[Sprite2D]:
 			var spr := Sprite2D.new()
 			spr.texture = child.texture
 			spr.position = child.position
-			spr.centered = false
+			spr.rotation = child.rotation
+			spr.scale = child.scale
+			spr.flip_h = child.flip_h
+			spr.flip_v = child.flip_v
+			spr.z_index = child.z_index
+			spr.centered = child.centered
+			spr.region_enabled = child.region_enabled
+			if child.region_enabled:
+				spr.region_rect = child.region_rect
 			arr.append(spr)
 	return arr
 
@@ -85,9 +93,12 @@ func _restore_state(hc: Vector2i, pd: Vector2i, occ: Array[Vector2i], sections: 
 	prev_direction = pd
 	occupied_cells = occ.duplicate(true)
 
-	for c in body_sections.get_children():
-		body_sections.remove_child(c)
-		c.queue_free() 
+	# Remove all children and free them
+	for child in body_sections.get_children():
+		body_sections.remove_child(child)
+		child.queue_free()
+
+	# Add back cloned sprites
 	for spr in sections:
 		body_sections.add_child(spr)
 
