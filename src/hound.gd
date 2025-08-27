@@ -5,8 +5,11 @@ extends Node2D
 @onready var dog_body_layer: TileMapLayer = $DogBodyLayer
 
 @export var maximum_length: int = 7
+@export var minimal_length: int = 3
 
 @export var body_schema: BodySchema
+
+var segments: Array[Vector2i] = [] 
 
 enum SectionType {
 	HEAD,
@@ -25,13 +28,18 @@ var head_index: int = 0
 var history: Array[Command] = []
 
 func _ready() -> void:
+	segments = []
 	for t in [SectionType.TAIL, SectionType.BODY, SectionType.HEAD]:
-		_add_section(t, Vector2(current_length*Global.cell_size, 0), Vector2i.RIGHT)
-		occupied_cells.append(Vector2i(current_length, 0))
+		var pos = Vector2(current_length * Global.cell_size, 0)
+		_add_section(t, pos, Vector2i.RIGHT)
+		var cell_coords = Vector2i(current_length, 0)
+		occupied_cells.append(cell_coords)
+		segments.append(cell_coords)
 		if t == SectionType.HEAD:
-			head_coords = Vector2i(current_length, 0)
+			head_coords = cell_coords
 			head_index = 2
 		current_length += 1
+
 	prev_direction = Vector2i.RIGHT
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -93,12 +101,10 @@ func _restore_state(hc: Vector2i, pd: Vector2i, occ: Array[Vector2i], sections: 
 	prev_direction = pd
 	occupied_cells = occ.duplicate(true)
 
-	# Remove all children and free them
 	for child in body_sections.get_children():
 		body_sections.remove_child(child)
 		child.queue_free()
 
-	# Add back cloned sprites
 	for spr in sections:
 		body_sections.add_child(spr)
 
@@ -108,42 +114,102 @@ func undo_last():
 	var cmd: Command = history.pop_back()
 	cmd.undo(self)
 
-func _execute_stretch():
-	current_length += 1
-	$Sounds/StretchSound.play()
+func _execute_stretch() -> bool:
+	if current_length + 1 > maximum_length:
+		return false
+	if _is_going_opposite(prev_direction) or _is_crossing_itself(prev_direction):
+		$Sounds/ErrorSound.play()
+		return false
+	# Move head forward
+	head_coords += prev_direction
+	segments.append(head_coords)
+	occupied_cells.append(head_coords)
 
-func _execute_shrink():
-	if current_length > 1:
-		current_length -= 1
-		$Sounds/ShrinkSound.play()
-		
+	current_length = segments.size()
+	print("Current length: ",  current_length)
+	_rebuild_sprites()
+
+	$Sounds/StretchSound.play()
+	return true
+
+func _execute_shrink() -> bool:
+	if current_length  - 1 < minimal_length:
+		return false
+
+	# Remove tail segment
+	if segments.size() > 0:
+		var removed = segments.pop_front()
+		occupied_cells.remove_at(0)
+		_rebuild_sprites()
+
+	current_length = segments.size()
+
+	$Sounds/ShrinkSound.play()
+	return true
 
 func _execute_move(direction: Vector2i) -> bool:
+	# invalid move
 	if _is_going_opposite(direction) or _is_crossing_itself(direction):
 		$Sounds/ErrorSound.play()
 		return false
 
-	# spawn straight/curve section
-	if direction == prev_direction:
-		_add_section(SectionType.BODY, head_coords * Global.cell_size, direction)
-	else:
-		_add_section(SectionType.BODY, head_coords * Global.cell_size, direction, prev_direction)
-
-	# move head
 	head_coords += direction
-	var head := body_sections.get_child(head_index) as Sprite2D
-	head.position += direction * Global.cell_size
-	if direction != prev_direction:
-		head.texture = _extract_texture(
-			dog_body_layer,
-			_get_atlas_coords(SectionType.HEAD, direction, prev_direction)
-		)
-
-	# sound + state
-	$Sounds/StretchSound.play()
+	segments.append(head_coords)
 	occupied_cells.append(head_coords)
 	prev_direction = direction
+	current_length = segments.size()
+
+	var removed = segments.pop_front()
+	occupied_cells.remove_at(0)
+
+	_rebuild_sprites()
+
+	$Sounds/StretchSound.play()
 	return true
+
+func _rebuild_sprites():
+	# Remove all existing sprites
+	for child in body_sections.get_children():
+		body_sections.remove_child(child)
+		child.queue_free()
+
+	for i in range(segments.size()):
+		var pos = segments[i] * Global.cell_size
+		var spr: Sprite2D
+		var prev_dir = _direction_from_to(segments[i-1], segments[i]) if i > 0 else Vector2i.ZERO
+		var next_dir = _direction_from_to(segments[i], segments[i+1]) if i < segments.size()-1 else Vector2i.ZERO
+		var atlas_coords: Vector2i = Vector2i.ZERO
+
+		if i == 0:
+			# Tail
+			atlas_coords = _get_atlas_coords(SectionType.TAIL, next_dir)
+		elif i == segments.size() - 1:
+			# Head
+			atlas_coords = _get_atlas_coords(SectionType.HEAD, prev_dir)
+		else:
+			# Body
+			if prev_dir == next_dir:
+				atlas_coords = body_schema.body_h if prev_dir.x != 0 else body_schema.body_v
+			else:
+				atlas_coords = _get_atlas_coords(SectionType.BODY, next_dir, prev_dir)
+		# Create and add sprite
+		spr = _extract_sprite(dog_body_layer, atlas_coords)
+		spr.position = pos
+		body_sections.add_child(spr)
+	head_index = body_sections.get_child_count() - 1
+
+func _direction_from_to(a: Vector2i, b: Vector2i) -> Vector2i:
+	var diff = b - a
+	if diff.x > 0:
+		return Vector2i.RIGHT
+	if diff.x < 0:
+		return Vector2i.LEFT
+	if diff.y > 0:
+		return Vector2i.DOWN
+	if diff.y < 0:
+		return Vector2i.UP
+	return Vector2i.ZERO
+
 
 func _is_going_opposite(direction: Vector2i) -> bool:
 	return (-1)*direction == prev_direction
@@ -216,7 +282,7 @@ func _get_atlas_coords(
 					p == Vector2i.DOWN and d == Vector2i.LEFT):
 						return body_schema.body_c0011
 				if ((p == Vector2i.DOWN and d == Vector2i.RIGHT) or
-					(p == Vector2i.LEFT and d == Vector2i.UP)):
+					(p == Vector2i.LEFT and d  	== Vector2i.UP)):
 						return body_schema.body_c1001
 	return Vector2i.ZERO
 
