@@ -97,18 +97,19 @@ func _clone_sections() -> Array[Sprite2D]:
 	return arr
 
 func _restore_state(
-	hc: Vector2i,
 	pd: Vector2i,
 	occ: Array[Vector2i],
 	sects: Array[Sprite2D],
 	seg: Array[Vector2i]
 ):
-	head_coords = hc
-	prev_direction = pd
-	occupied_cells = occ.duplicate(true)
+	# Restore logical state
 	segments = seg.duplicate(true)
 	current_length = segments.size()
+	prev_direction = pd
+	occupied_cells = occ.duplicate(true)
+	head_coords = segments[segments.size() - 1] if segments.size() > 0 else Vector2i.ZERO
 
+	# Remove old visual sections
 	for child in body_sections.get_children():
 		body_sections.remove_child(child)
 		child.queue_free()
