@@ -54,9 +54,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if dir != Vector2i.ZERO:
 		try_move_forward(dir)
 
-	if event.is_action_pressed("stretch"):
-		$Sounds/StretchSound.play()
-
 	if event.is_action_pressed("shrink"):
 		$Sounds/ShrinkSound.play()
 	
