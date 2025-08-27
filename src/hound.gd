@@ -5,8 +5,8 @@ extends Node2D
 @onready var dog_body_layer: TileMapLayer = $DogBodyLayer
 
 @export var maximum_length: int = 7
-
 @export var body_schema: BodySchema
+
 
 enum SectionType {
 	HEAD,

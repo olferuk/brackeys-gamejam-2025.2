@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn8muomcp756l"]
+[gd_scene load_steps=7 format=3 uid="uid://cn8muomcp756l"]
 
+[ext_resource type="Script" uid="uid://vcsq71uuv881" path="res://src/context_help.gd" id="1_hlxk6"]
 [ext_resource type="Texture2D" uid="uid://dd6s45l2q172t" path="res://vfx/ui/input_prompts/keyboard_w.png" id="2_2xrcq"]
 [ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="2_fw2f3"]
 [ext_resource type="Texture2D" uid="uid://bjm2mp4xjwnhe" path="res://vfx/ui/input_prompts/keyboard_a.png" id="3_dkck3"]
 [ext_resource type="Texture2D" uid="uid://c31paimi1i14o" path="res://vfx/ui/input_prompts/keyboard_s.png" id="4_f5vug"]
 [ext_resource type="Texture2D" uid="uid://3viyja3c6oww" path="res://vfx/ui/input_prompts/keyboard_d.png" id="5_d5va8"]
 
-[node name="ContextHelp" type="HBoxContainer"]
+[node name="ContextHelpWasd" type="HBoxContainer"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
+script = ExtResource("1_hlxk6")
+time = 0.6
+amplitude = 0.05
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(64, 0)
@@ -24,6 +28,7 @@ theme_override_font_sizes/font_size = 24
 text = "to move"
 
 [node name="Keys" type="Node2D" parent="."]
+position = Vector2(0, -6)
 scale = Vector2(0.8, 0.8)
 
 [node name="KeyboardW" type="Sprite2D" parent="Keys"]
