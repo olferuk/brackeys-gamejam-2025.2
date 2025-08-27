@@ -2,7 +2,7 @@ class_name Command
 extends RefCounted
 
 
-func execute(hound: Hound) -> bool:
+func execute(_hound: Hound) -> bool:
 	return true
 
-func undo(hound: Hound) -> void: pass
+func undo(_hound: Hound) -> void: pass

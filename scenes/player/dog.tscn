@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://wjm7vdv2ue48"]
+
+[ext_resource type="Script" path="res://src/dog.gd" id="1_pvvms"]
+
+[node name="Dog" type="Node2D"]
+script = ExtResource("1_pvvms")
+
+[node name="Segments" type="Node2D" parent="."]
