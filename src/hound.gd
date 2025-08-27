@@ -91,6 +91,7 @@ func try_move_forward(direction: Vector2i):
 		# re-create the head, as it's turned otherwise now
 		var head := body_sections.get_child(head_index) as Sprite2D
 		head.position += direction*Global.cell_size
+		head.texture = _extract_texture(dog_body_layer, _get_atlas_coords(SectionType.HEAD, direction, prev_direction))
 	
 	# play expand sound
 	$Sounds/StretchSound.play()
@@ -174,9 +175,16 @@ func _get_atlas_coords(
 						return body_schema.body_c1001
 	return Vector2i.ZERO
 
-func _extract_sprite(ts: TileMapLayer, atlas_coords: Vector2i) -> Sprite2D:
+func _extract_texture(ts: TileMapLayer, atlas_coords: Vector2i) -> Texture2D:
 	var src = ts.tile_set.get_source(0) as TileSetAtlasSource
 	var region: Rect2i = src.get_tile_texture_region(atlas_coords)
-	var tex := AtlasTexture.new(); tex.atlas = src.get_texture(); tex.region = region
-	var spr := Sprite2D.new(); spr.texture = tex; spr.centered = false
+	var tex := AtlasTexture.new();
+	tex.atlas = src.get_texture();
+	tex.region = region
+	return tex
+
+func _extract_sprite(ts: TileMapLayer, atlas_coords: Vector2i) -> Sprite2D:
+	var spr := Sprite2D.new();
+	spr.texture = _extract_texture(ts, atlas_coords);
+	spr.centered = false
 	return spr
