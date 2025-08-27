@@ -20,4 +20,9 @@ func execute(hound: Hound) -> bool:
 	return hound._execute_move(direction)
 
 func undo(hound: Hound) -> void:
-	hound._restore_state(hound.head_coords, hound.prev_direction, prev_occupied, prev_sections, prev_segments)
+	hound._restore_state(
+		hound.prev_direction,
+		prev_occupied,
+		prev_sections,
+		prev_segments
+	)
