@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://nc18bomblhw7" path="res://scenes/player/body_schema.tres" id="2_xekb5"]
 [ext_resource type="AudioStream" uid="uid://d0af5ud87ke5m" path="res://sfx/expand.mp3" id="4_iw5is"]
 [ext_resource type="AudioStream" uid="uid://bggrf25ta24qd" path="res://sfx/shrink.mp3" id="5_p2wvy"]
-[ext_resource type="AudioStream" uid="uid://bwby3h542gcwm" path="res://sfx/error-[AudioTrimmer.com] (1).mp3" id="6_p2wvy"]
+[ext_resource type="AudioStream" uid="uid://bwby3h542gcwm" path="res://sfx/error.mp3" id="6_p2wvy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xekb5"]
 texture = ExtResource("2_ampte")
