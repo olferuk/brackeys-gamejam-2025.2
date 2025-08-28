@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dogde3fpamwey"]
 
-[ext_resource type="Script" uid="uid://x40hywt55vjb" path="res://src/transition.gd" id="1_ghw5a"]
+[ext_resource type="Script" uid="uid://x40hywt55vjb" path="res://src/ui/transition.gd" id="1_ghw5a"]
 [ext_resource type="Shader" uid="uid://qh05nsh2qp04" path="res://src/shaders/glider.gdshader" id="2_c27ap"]
 [ext_resource type="Texture2D" uid="uid://tkjhbbx3v4bq" path="res://vfx/ui/cookie_tiled_icon.png" id="3_mpjqm"]
 
@@ -48,6 +48,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Patterns:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.258824)]
+}
 
 [sub_resource type="Animation" id="Animation_rerct"]
 length = 0.001
@@ -86,6 +98,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Patterns:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.258824)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rerct"]

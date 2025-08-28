@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn8muomcp756l"]
+[gd_scene load_steps=6 format=3 uid="uid://cn8muomcp756l"]
 
-[ext_resource type="Script" uid="uid://vcsq71uuv881" path="res://src/context_help.gd" id="1_hlxk6"]
 [ext_resource type="Texture2D" uid="uid://dd6s45l2q172t" path="res://vfx/ui/input_prompts/keyboard_w.png" id="2_2xrcq"]
 [ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="2_fw2f3"]
 [ext_resource type="Texture2D" uid="uid://bjm2mp4xjwnhe" path="res://vfx/ui/input_prompts/keyboard_a.png" id="3_dkck3"]
@@ -12,9 +11,6 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
-script = ExtResource("1_hlxk6")
-time = 1.0
-amplitude = 0.02
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(64, 0)
