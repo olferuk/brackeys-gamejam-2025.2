@@ -20,6 +20,7 @@ Global="*res://src/global/global.gd"
 SignalBus="*res://src/global/signal_bus.gd"
 Transition="*res://scenes/ui/transition.tscn"
 Consts="*res://scenes/global/consts.tscn"
+MapManager="*res://src/global/map_manager.gd"
 
 [display]
 

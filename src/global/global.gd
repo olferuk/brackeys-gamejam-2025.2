@@ -1,7 +1,5 @@
 extends Node
 
-#var gameSpeed: float = 1.0
-var paused: bool = false
 var cell_size: float = 64.0
 
 #region Audio

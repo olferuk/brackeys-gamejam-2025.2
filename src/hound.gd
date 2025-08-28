@@ -123,6 +123,9 @@ func undo_last():
 	$Sounds/UndoSound.play()
 	var cmd: Command = history.pop_back()
 	cmd.undo(self)
+	
+	MapManager.visit(head_coords)
+
 
 func _execute_stretch() -> bool:
 	if current_length + 1 > maximum_length:
@@ -138,6 +141,8 @@ func _execute_stretch() -> bool:
 
 	current_length = occupied_cells.size()
 	_rebuild_sprites()
+
+	MapManager.visit(head_coords)
 
 	$Sounds/StretchSound.play()
 	return true
@@ -158,7 +163,11 @@ func _execute_shrink() -> bool:
 
 func _execute_move(direction: Vector2i) -> bool:
 	# invalid move
-	if _is_going_opposite(direction) or _is_crossing_itself(direction):
+	if (
+		_is_going_opposite(direction) or
+		_is_crossing_itself(direction) or
+		!MapManager.is_walkable(head_coords + direction)
+	):
 		$Sounds/ErrorSound.play()
 		return false
 
@@ -171,6 +180,8 @@ func _execute_move(direction: Vector2i) -> bool:
 	occupied_cells.remove_at(0)
 	
 	_rebuild_sprites()
+	
+	MapManager.visit(head_coords)
 	
 	($Sounds/Steps.get_children().pick_random() as AudioStreamPlayer).play()
 	return true
@@ -217,7 +228,6 @@ func _direction_from_to(a: Vector2i, b: Vector2i) -> Vector2i:
 	if diff.y < 0:
 		return Vector2i.UP
 	return Vector2i.ZERO
-
 
 func _is_going_opposite(direction: Vector2i) -> bool:
 	return (-1)*direction == prev_direction
