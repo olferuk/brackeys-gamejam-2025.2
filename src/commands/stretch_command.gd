@@ -4,20 +4,19 @@ class_name StretchCommand
 var prev_length: int
 var prev_occupied: Array[Vector2i]
 var prev_sections: Array[Sprite2D]
-var prev_segments: Array[Vector2i]
+var prev_direction: Vector2i
 
 func execute(hound: Hound) -> bool:
 	prev_length = hound.current_length
 	prev_occupied = hound.occupied_cells.duplicate(true)
 	prev_sections = hound._clone_sections()
-	prev_segments = hound.segments.duplicate(true) 
+	prev_direction = hound.prev_direction
 	return hound._execute_stretch()
 
 func undo(hound: Hound) -> void:
 	hound._restore_state(
-		hound.prev_direction,
+		prev_direction,
 		prev_occupied,
 		prev_sections,
-		prev_segments
 	)
 	hound.current_length = prev_length
