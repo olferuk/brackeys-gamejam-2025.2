@@ -75,6 +75,7 @@ texture_region_size = Vector2i(64, 64)
 3:1/0/terrains_peering_bit/top_left_corner = 0
 3:1/0/terrains_peering_bit/top_side = 0
 3:1/0/terrains_peering_bit/top_right_corner = 0
+3:1/0/custom_data_0 = true
 4:1/0 = 0
 4:1/0/terrain_set = 0
 4:1/0/terrains_peering_bit/bottom_left_corner = 0
@@ -107,6 +108,7 @@ texture_region_size = Vector2i(64, 64)
 7:1/0/terrains_peering_bit/top_side = 0
 7:1/0/terrains_peering_bit/top_right_corner = 0
 0:2/0 = 0
+0:2/0/custom_data_0 = true
 1:2/0 = 0
 1:2/0/terrain_set = 0
 1:2/0/terrains_peering_bit/bottom_right_corner = 0
@@ -200,6 +202,8 @@ tile_size = Vector2i(64, 64)
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.0123439, 0.426235, 0.536723, 1)
+custom_data_layer_0/name = "walkable"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_o5qli")
 
 [node name="Main" type="Node2D"]

@@ -55,26 +55,28 @@ func _unhandled_input(event: InputEvent) -> void:
 		dir = Vector2i.LEFT
 	elif event.is_action_pressed("move_right"):
 		dir = Vector2i.RIGHT
-
+	
 	if dir != Vector2i.ZERO:
-		var cmd := MoveCommand.new(dir)
+		var cmd: MoveCommand = MoveCommand.new(dir)
 		if cmd.execute(self):
 			history.append(cmd)
-
+	
 	if event.is_action_pressed("stretch"):
-		var cmd := StretchCommand.new()
+		var cmd: StretchCommand = StretchCommand.new()
 		cmd.execute(self)
 		history.append(cmd)
-
+	
 	if event.is_action_pressed("shrink"):
-		var cmd := ShrinkCommand.new()
+		var cmd: ShrinkCommand = ShrinkCommand.new()
 		cmd.execute(self)
 		history.append(cmd)
-	#$Sounds/ShrinkSound.play()
+		$Sounds/ShrinkSound.play()
+	
 	if event.is_action_pressed("Undo"):
 		undo_last()
-
+	
 	if event.is_action_pressed("RestartLevel"):
+		$Sounds/WhooshSound.play()
 		SignalBus.restart_level.emit()
 
 func _clone_sections() -> Array[Sprite2D]:
@@ -121,6 +123,7 @@ func _restore_state(
 func undo_last():
 	if history.is_empty():
 		return
+	$Sounds/UndoSound.play()
 	var cmd: Command = history.pop_back()
 	cmd.undo(self)
 
@@ -130,6 +133,7 @@ func _execute_stretch() -> bool:
 	if _is_going_opposite(prev_direction) or _is_crossing_itself(prev_direction):
 		$Sounds/ErrorSound.play()
 		return false
+	
 	# Move head forward
 	head_coords += prev_direction
 	segments.append(head_coords)
@@ -148,7 +152,7 @@ func _execute_shrink() -> bool:
 
 	# Remove tail segment
 	if segments.size() > 0:
-		var removed = segments.pop_front()
+		var _removed = segments.pop_front()
 		occupied_cells.remove_at(0)
 		_rebuild_sprites()
 
@@ -169,12 +173,12 @@ func _execute_move(direction: Vector2i) -> bool:
 	prev_direction = direction
 	current_length = segments.size()
 
-	var removed = segments.pop_front()
+	var _removed = segments.pop_front()
 	occupied_cells.remove_at(0)
-
+	
 	_rebuild_sprites()
-
-	$Sounds/StretchSound.play()
+	
+	($Sounds/Steps.get_children().pick_random() as AudioStreamPlayer).play()
 	return true
 
 func _rebuild_sprites():

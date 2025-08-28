@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtvv1vd08dxpi"]
+[gd_scene load_steps=17 format=3 uid="uid://dtvv1vd08dxpi"]
 
 [ext_resource type="Script" uid="uid://806q2dyjqodo" path="res://src/hound.gd" id="1_20k3t"]
 [ext_resource type="Texture2D" uid="uid://dd7eban8qfw4j" path="res://vfx/dog.png" id="2_ampte"]
@@ -6,6 +6,12 @@
 [ext_resource type="AudioStream" uid="uid://d0af5ud87ke5m" path="res://sfx/expand.mp3" id="4_iw5is"]
 [ext_resource type="AudioStream" uid="uid://bggrf25ta24qd" path="res://sfx/shrink.mp3" id="5_p2wvy"]
 [ext_resource type="AudioStream" uid="uid://bwby3h542gcwm" path="res://sfx/error.mp3" id="6_p2wvy"]
+[ext_resource type="AudioStream" uid="uid://ujsbehyo6a0d" path="res://sfx/whoosh.mp3" id="7_owmm0"]
+[ext_resource type="AudioStream" uid="uid://bvfshh6e48s1h" path="res://sfx/undo.mp3" id="8_rvxoc"]
+[ext_resource type="AudioStream" uid="uid://ucrjk1p151j7" path="res://sfx/steps/steps1.mp3" id="9_bjrvl"]
+[ext_resource type="AudioStream" uid="uid://bwok1sgajuso5" path="res://sfx/steps/steps2.mp3" id="10_ds8yi"]
+[ext_resource type="AudioStream" uid="uid://gs61sn3lxfvn" path="res://sfx/steps/steps3.mp3" id="11_4ft3g"]
+[ext_resource type="AudioStream" uid="uid://dw51mnilc5ree" path="res://sfx/steps/steps4.mp3" id="12_84yoy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xekb5"]
 texture = ExtResource("2_ampte")
@@ -54,11 +60,32 @@ tile_set = SubResource("TileSet_p2wvy")
 
 [node name="Sounds" type="Node" parent="."]
 
-[node name="StretchSound" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="StretchSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("4_iw5is")
+volume_db = -12.0
 
-[node name="ShrinkSound" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="ShrinkSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("5_p2wvy")
 
-[node name="ErrorSound" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="ErrorSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("6_p2wvy")
+
+[node name="WhooshSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_owmm0")
+
+[node name="UndoSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_rvxoc")
+
+[node name="Steps" type="Node" parent="Sounds"]
+
+[node name="Steps1" type="AudioStreamPlayer" parent="Sounds/Steps"]
+stream = ExtResource("9_bjrvl")
+
+[node name="Steps2" type="AudioStreamPlayer" parent="Sounds/Steps"]
+stream = ExtResource("10_ds8yi")
+
+[node name="Steps3" type="AudioStreamPlayer" parent="Sounds/Steps"]
+stream = ExtResource("11_4ft3g")
+
+[node name="Steps4" type="AudioStreamPlayer" parent="Sounds/Steps"]
+stream = ExtResource("12_84yoy")
