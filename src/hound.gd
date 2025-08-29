@@ -9,7 +9,6 @@ extends Node2D
 
 @export var body_schema: BodySchema
 
-var segments: Array[Vector2i] = [] 
 
 enum SectionType {
 	HEAD,
@@ -21,20 +20,19 @@ var is_in_progress: bool = false
 var current_length: int = 0
 var occupied_cells: Array[Vector2i] = []
 var prev_direction: Vector2i = Vector2i.ZERO
-
+var prev_prev_direction: Vector2i = Vector2i.ZERO
 var head_coords: Vector2i = Vector2i.ZERO
 var head_index: int = 0
 
 var history: Array[Command] = []
 
 func _ready() -> void:
-	segments = []
+	occupied_cells = []
 	for t in [SectionType.TAIL, SectionType.BODY, SectionType.HEAD]:
 		var pos = Vector2(current_length * Global.cell_size, 0)
 		_add_section(t, pos, Vector2i.RIGHT)
 		var cell_coords = Vector2i(current_length, 0)
 		occupied_cells.append(cell_coords)
-		segments.append(cell_coords)
 		if t == SectionType.HEAD:
 			head_coords = cell_coords
 			head_index = 2
@@ -102,14 +100,13 @@ func _restore_state(
 	pd: Vector2i,
 	occ: Array[Vector2i],
 	sects: Array[Sprite2D],
-	seg: Array[Vector2i]
 ):
 	# Restore logical state
-	segments = seg.duplicate(true)
-	current_length = segments.size()
-	prev_direction = pd
 	occupied_cells = occ.duplicate(true)
-	head_coords = segments[segments.size() - 1] if segments.size() > 0 else Vector2i.ZERO
+	current_length = occupied_cells.size()
+	prev_direction = pd
+	
+	head_coords = occupied_cells[occupied_cells.size() - 1] if occupied_cells.size() > 0 else Vector2i.ZERO
 
 	# Remove old visual sections
 	for child in body_sections.get_children():
@@ -139,11 +136,10 @@ func _execute_stretch() -> bool:
 	
 	# Move head forward
 	head_coords += prev_direction
-	segments.append(head_coords)
+	occupied_cells.append(head_coords)
 	occupied_cells.append(head_coords)
 
-	current_length = segments.size()
-	print("Current length: ",  current_length)
+	current_length = occupied_cells.size()
 	_rebuild_sprites()
 
 	MapManager.visit(head_coords)
@@ -156,12 +152,11 @@ func _execute_shrink() -> bool:
 		return false
 
 	# Remove tail segment
-	if segments.size() > 0:
-		var _removed = segments.pop_front()
+	if occupied_cells.size() > 0:
 		occupied_cells.remove_at(0)
 		_rebuild_sprites()
 
-	current_length = segments.size()
+	current_length = occupied_cells.size()
 
 	$Sounds/ShrinkSound.play()
 	return true
@@ -177,12 +172,11 @@ func _execute_move(direction: Vector2i) -> bool:
 		return false
 
 	head_coords += direction
-	segments.append(head_coords)
 	occupied_cells.append(head_coords)
 	prev_direction = direction
-	current_length = segments.size()
+	
+	current_length = occupied_cells.size()
 
-	var _removed = segments.pop_front()
 	occupied_cells.remove_at(0)
 	
 	_rebuild_sprites()
@@ -198,17 +192,17 @@ func _rebuild_sprites():
 		body_sections.remove_child(child)
 		child.queue_free()
 
-	for i in range(segments.size()):
-		var pos = segments[i] * Global.cell_size
+	for i in range(occupied_cells.size()):
+		var pos = occupied_cells[i] * Global.cell_size
 		var spr: Sprite2D
-		var prev_dir = _direction_from_to(segments[i-1], segments[i]) if i > 0 else Vector2i.ZERO
-		var next_dir = _direction_from_to(segments[i], segments[i+1]) if i < segments.size()-1 else Vector2i.ZERO
+		var prev_dir = _direction_from_to(occupied_cells[i-1], occupied_cells[i]) if i > 0 else Vector2i.ZERO
+		var next_dir = _direction_from_to(occupied_cells[i], occupied_cells[i+1]) if i < occupied_cells.size()-1 else Vector2i.ZERO
 		var atlas_coords: Vector2i = Vector2i.ZERO
 
 		if i == 0:
 			# Tail
 			atlas_coords = _get_atlas_coords(SectionType.TAIL, next_dir)
-		elif i == segments.size() - 1:
+		elif i == occupied_cells.size() - 1:
 			# Head
 			atlas_coords = _get_atlas_coords(SectionType.HEAD, prev_dir)
 		else:

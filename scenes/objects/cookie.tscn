@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://m508xm344dmu"]
+
+[ext_resource type="Script" uid="uid://wy3js81uc1gp" path="res://src/objects/cookie.gd" id="1_3ig0n"]
+[ext_resource type="Shader" uid="uid://baly3q7ghlw85" path="res://src/shaders/radial_shine.gdshader" id="1_apouq"]
+[ext_resource type="Texture2D" uid="uid://bo6ekggchdwdp" path="res://vfx/ui/knob.png" id="2_3ig0n"]
+[ext_resource type="Texture2D" uid="uid://cqgui1j7rnbqd" path="res://vfx/ui/knob_2.png" id="3_dsab2"]
+[ext_resource type="AudioStream" uid="uid://bfmb18y618pwv" path="res://sfx/win.mp3" id="5_nehyt"]
+[ext_resource type="AudioStream" uid="uid://c4u558sfhbvoq" path="res://sfx/win_crunch.mp3" id="6_d6iuk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovdkn"]
+resource_local_to_scene = true
+shader = ExtResource("1_apouq")
+shader_parameter/shine_num = 8.0
+shader_parameter/rotation_speed = 3.0
+shader_parameter/light_magnitude = 2.0
+shader_parameter/filter_distence = 1.0
+shader_parameter/filter_magnitude = 1.0
+shader_parameter/filter_minv = 0.279
+shader_parameter/cut_inner_radius = 0.17
+shader_parameter/color = Color(0.913543, 0.87207, 0.7532, 1)
+shader_parameter/NOISE_speed = Vector2(0, 0)
+shader_parameter/NOISE_magnitude = 0.0
+
+[node name="Cookie" type="Sprite2D"]
+script = ExtResource("1_3ig0n")
+
+[node name="Rays" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ovdkn")
+scale = Vector2(3.6, 3.6)
+texture = ExtResource("2_3ig0n")
+
+[node name="Snack" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_dsab2")
+
+[node name="WinBiinnnn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nehyt")
+volume_db = 6.0
+
+[node name="WinCrunch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_d6iuk")

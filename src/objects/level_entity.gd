@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _enter_tree() -> void:
 	set_meta(&"name", item.name)
-	
+
 func _exit_tree() -> void:
 	remove_meta(&"name")
 
