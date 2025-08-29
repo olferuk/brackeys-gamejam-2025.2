@@ -1,8 +1,15 @@
 extends Sprite2D
+@export var textures: Array[Texture2D] 
+
+func _ready() -> void:
+	$Snack.texture = textures[0]
 
 func eaten():
 	$WinBiinnnn.play()
 	$WinCrunch.play()
+	
+	$Snack.texture = textures[1]
+	
 	var tween: Tween = create_tween()
 	(
 		tween
