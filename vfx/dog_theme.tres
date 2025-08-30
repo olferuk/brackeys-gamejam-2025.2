@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=13 format=3 uid="uid://kv5hrut8ubdx"]
 
 [ext_resource type="FontFile" uid="uid://cledngpla3142" path="res://vfx/fonts/Tanker-Regular.otf" id="1_nxr07"]
-[ext_resource type="Texture2D" uid="uid://cqgui1j7rnbqd" path="res://vfx/knob_2.png" id="2_v0kw8"]
+[ext_resource type="Texture2D" uid="uid://cqgui1j7rnbqd" path="res://vfx/ui/knob_2.png" id="2_v0kw8"]
 [ext_resource type="Texture2D" uid="uid://bo6ekggchdwdp" path="res://vfx/ui/knob.png" id="3_ycfxs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxr07"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4p0h2oo23fqp"]
+
+[ext_resource type="Script" uid="uid://bihm3rimjmufr" path="res://src/levels/level_02.gd" id="1_onnux"]
+[ext_resource type="PackedScene" uid="uid://mdrq5w8asrmt" path="res://scenes/skybox.tscn" id="2_mxx8o"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_onnux")
+
+[node name="Skybox" parent="." instance=ExtResource("2_mxx8o")]
