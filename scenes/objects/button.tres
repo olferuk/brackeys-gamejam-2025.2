@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://cj22wo324mqks"]
-
-[ext_resource type="Script" uid="uid://bll3pqu3501sg" path="res://resources/item.gd" id="1_rrlxo"]
-
-[resource]
-script = ExtResource("1_rrlxo")
-name = "Button"
-sprite_paths = Array[String](["res://vfx/items/button_red_unpressed.png", "res://vfx/items/button_red_pressed.png", "res://vfx/items/button_blue_unpressed.png", "res://vfx/items/button_blue_pressed.png"])
-metadata/_custom_type_script = "uid://bll3pqu3501sg"

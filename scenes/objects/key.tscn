@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhlnruax2xwcf"]
+
+[ext_resource type="Texture2D" uid="uid://c8ahyd376vw82" path="res://vfx/items/key.png" id="1_7dc8w"]
+[ext_resource type="Script" uid="uid://bug463lsqmy66" path="res://src/objects/key.gd" id="1_xg6wr"]
+
+[node name="Key" type="Node2D"]
+script = ExtResource("1_xg6wr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7dc8w")
+offset = Vector2(0, -16.845)
