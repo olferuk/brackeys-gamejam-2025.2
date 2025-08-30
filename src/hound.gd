@@ -126,11 +126,15 @@ func undo_last():
 	
 	MapManager.visit(head_coords)
 
-
 func _execute_stretch() -> bool:
 	if current_length + 1 > maximum_length:
 		return false
-	if _is_going_opposite(prev_direction) or _is_crossing_itself(prev_direction):
+	
+	if (
+		_is_going_opposite(prev_direction) or
+		_is_crossing_itself(prev_direction) or
+		!MapManager.is_walkable(head_coords + prev_direction)
+	):
 		$Sounds/ErrorSound.play()
 		return false
 	
@@ -138,12 +142,12 @@ func _execute_stretch() -> bool:
 	head_coords += prev_direction
 	occupied_cells.append(head_coords)
 	occupied_cells.append(head_coords)
-
+	
 	current_length = occupied_cells.size()
 	_rebuild_sprites()
-
+	
 	MapManager.visit(head_coords)
-
+	
 	$Sounds/StretchSound.play()
 	return true
 
@@ -195,10 +199,17 @@ func _rebuild_sprites():
 	for i in range(occupied_cells.size()):
 		var pos = occupied_cells[i] * Global.cell_size
 		var spr: Sprite2D
-		var prev_dir = _direction_from_to(occupied_cells[i-1], occupied_cells[i]) if i > 0 else Vector2i.ZERO
-		var next_dir = _direction_from_to(occupied_cells[i], occupied_cells[i+1]) if i < occupied_cells.size()-1 else Vector2i.ZERO
+		
+		var prev_dir: Vector2i = _direction_from_to(
+			occupied_cells[i - 1], occupied_cells[i]
+		) if i > 0 else Vector2i.ZERO
+		
+		var next_dir: Vector2i = _direction_from_to(
+			occupied_cells[i], occupied_cells[i+1]
+		) if i < occupied_cells.size()-1 else Vector2i.ZERO
+		
 		var atlas_coords: Vector2i = Vector2i.ZERO
-
+		
 		if i == 0:
 			# Tail
 			atlas_coords = _get_atlas_coords(SectionType.TAIL, next_dir)
