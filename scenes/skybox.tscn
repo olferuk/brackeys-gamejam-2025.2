@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://mdrq5w8asrmt"]
+
+[ext_resource type="Texture2D" uid="uid://u8nfmhqmjjyv" path="res://vfx/levels/sky.png" id="1_mu0ws"]
+[ext_resource type="Shader" uid="uid://bomwc7ier3v6e" path="res://src/shaders/sine_float.gdshader" id="2_hrkmm"]
+[ext_resource type="Texture2D" uid="uid://1d8lc8xwit3p" path="res://vfx/levels/clouds/Cloud1.png" id="3_vk4a3"]
+[ext_resource type="Texture2D" uid="uid://f64tovj42vlf" path="res://vfx/levels/clouds/Cloud2.png" id="4_ab0bn"]
+[ext_resource type="Texture2D" uid="uid://dxkj5ix5hbbu8" path="res://vfx/levels/clouds/Cloud4.png" id="5_bbgff"]
+[ext_resource type="Texture2D" uid="uid://ckrvsdw10np0i" path="res://vfx/levels/clouds/Cloud6.png" id="6_sf6vd"]
+[ext_resource type="Texture2D" uid="uid://dubw8kay1kdvr" path="res://vfx/levels/clouds/Cloud7.png" id="7_cawid"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cd15k"]
+resource_local_to_scene = true
+shader = ExtResource("2_hrkmm")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = false
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(0, 3)
+shader_parameter/sine_speed = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qonbx"]
+resource_local_to_scene = true
+shader = ExtResource("2_hrkmm")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = false
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(0, 1)
+shader_parameter/sine_speed = Vector2(0, 0.3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xp2r0"]
+resource_local_to_scene = true
+shader = ExtResource("2_hrkmm")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = false
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(0, 3.5)
+shader_parameter/sine_speed = Vector2(0, 1.3)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k1t3p"]
+resource_local_to_scene = true
+shader = ExtResource("2_hrkmm")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = false
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(0, 2)
+shader_parameter/sine_speed = Vector2(0, 0.6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_keymb"]
+resource_local_to_scene = true
+shader = ExtResource("2_hrkmm")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = false
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(0, 1)
+shader_parameter/sine_speed = Vector2(0, 2)
+
+[node name="Skybox" type="Node2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(569.261, 65.479)
+scale = Vector2(4.6978, 1.15424)
+texture = ExtResource("1_mu0ws")
+
+[node name="Clouds" type="Node2D" parent="."]
+
+[node name="Cloud1" type="Sprite2D" parent="Clouds"]
+material = SubResource("ShaderMaterial_cd15k")
+position = Vector2(253.273, 49.4545)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_vk4a3")
+
+[node name="Cloud2" type="Sprite2D" parent="Clouds"]
+material = SubResource("ShaderMaterial_qonbx")
+position = Vector2(989.752, 44.9917)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("4_ab0bn")
+
+[node name="Cloud4" type="Sprite2D" parent="Clouds"]
+material = SubResource("ShaderMaterial_xp2r0")
+position = Vector2(704, 64)
+texture = ExtResource("5_bbgff")
+
+[node name="Cloud6" type="Sprite2D" parent="Clouds"]
+material = SubResource("ShaderMaterial_k1t3p")
+position = Vector2(836.364, 107.091)
+texture = ExtResource("6_sf6vd")
+
+[node name="Cloud7" type="Sprite2D" parent="Clouds"]
+material = SubResource("ShaderMaterial_keymb")
+position = Vector2(402.356, -1.9526)
+texture = ExtResource("7_cawid")
