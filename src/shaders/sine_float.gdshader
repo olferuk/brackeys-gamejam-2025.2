@@ -6,9 +6,10 @@ uniform bool do_quantize;
 uniform float quantize_to : hint_range(0, 2, 0.1) = 1;
 uniform vec2 sine_amplitude = vec2(4.0, 0.0);
 uniform vec2 sine_speed = vec2(3.0, 0.0);
+uniform float shift: hint_range(0, 6.28318530) = 0.0;
 
 void vertex() {
-	vec2 s = sin(TIME * sine_speed);
+	vec2 s = sin(TIME * sine_speed + shift);
 	if (do_abs) {
 		s = abs(s);
 	}

@@ -16,6 +16,7 @@ shader_parameter/do_quantize = false
 shader_parameter/quantize_to = 1.0
 shader_parameter/sine_amplitude = Vector2(0, 3)
 shader_parameter/sine_speed = Vector2(0, 1)
+shader_parameter/shift = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qonbx"]
 resource_local_to_scene = true
@@ -25,6 +26,7 @@ shader_parameter/do_quantize = false
 shader_parameter/quantize_to = 1.0
 shader_parameter/sine_amplitude = Vector2(0, 1)
 shader_parameter/sine_speed = Vector2(0, 0.3)
+shader_parameter/shift = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xp2r0"]
 resource_local_to_scene = true
@@ -34,6 +36,7 @@ shader_parameter/do_quantize = false
 shader_parameter/quantize_to = 1.0
 shader_parameter/sine_amplitude = Vector2(0, 3.5)
 shader_parameter/sine_speed = Vector2(0, 1.3)
+shader_parameter/shift = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k1t3p"]
 resource_local_to_scene = true
@@ -43,6 +46,7 @@ shader_parameter/do_quantize = false
 shader_parameter/quantize_to = 1.0
 shader_parameter/sine_amplitude = Vector2(0, 2)
 shader_parameter/sine_speed = Vector2(0, 0.6)
+shader_parameter/shift = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_keymb"]
 resource_local_to_scene = true
@@ -52,6 +56,7 @@ shader_parameter/do_quantize = false
 shader_parameter/quantize_to = 1.0
 shader_parameter/sine_amplitude = Vector2(0, 1)
 shader_parameter/sine_speed = Vector2(0, 2)
+shader_parameter/shift = 0.0
 
 [node name="Skybox" type="Node2D"]
 

@@ -13,6 +13,7 @@ shader_parameter/do_quantize = false
 shader_parameter/quantize_to = 1.0
 shader_parameter/sine_amplitude = Vector2(0, 3)
 shader_parameter/sine_speed = Vector2(0, 1.5)
+shader_parameter/shift = 0.0
 
 [node name="Key" type="Node2D"]
 script = ExtResource("1_xg6wr")

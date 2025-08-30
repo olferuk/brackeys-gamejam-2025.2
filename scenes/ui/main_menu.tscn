@@ -15,6 +15,7 @@ shader_parameter/do_quantize = true
 shader_parameter/quantize_to = 1.0
 shader_parameter/sine_amplitude = Vector2(0, 8)
 shader_parameter/sine_speed = Vector2(0, 2)
+shader_parameter/shift = 0.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
