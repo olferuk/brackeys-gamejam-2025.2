@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=4 uid="uid://n3bt253b7pmx"]
 
 [ext_resource type="Texture2D" uid="uid://u8nfmhqmjjyv" path="res://vfx/levels/sky.png" id="1_g0jr5"]
-[ext_resource type="Script" uid="uid://k1k557t7o5us" path="res://src/level.gd" id="1_qwlqn"]
+[ext_resource type="Script" uid="uid://k1k557t7o5us" path="res://src/levels/level_01.gd" id="1_qwlqn"]
 [ext_resource type="Texture2D" uid="uid://75q5ne5hh4as" path="res://vfx/levels/ground-spritesheet.png" id="2_i4uh8"]
 [ext_resource type="PackedScene" uid="uid://cn8muomcp756l" path="res://scenes/ui/context_help/context_help_wasd.tscn" id="3_qwlqn"]
 [ext_resource type="PackedScene" uid="uid://dtvv1vd08dxpi" path="res://scenes/player/hound.tscn" id="4_i4uh8"]
