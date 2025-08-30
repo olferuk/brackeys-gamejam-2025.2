@@ -1,16 +1,9 @@
 extends Entity
-@export var textures: Array[Texture2D] 
 
 func _ready() -> void:
 	super._ready()
-	$Snack.texture = textures[0]
 
 func trigger():
-	$WinBiinnnn.play()
-	$WinCrunch.play()
-	
-	$Snack.texture = textures[1]
-	
 	var tween: Tween = create_tween()
 	(
 		tween
@@ -19,5 +12,6 @@ func trigger():
 			.tween_property(self, ^"scale", Vector2.ZERO, 0.7)
 	)
 	await tween.finished
-	SignalBus.level_won.emit()
+	#SignalBus.level_won.emit()
+	print("Key collected")
 	queue_free()

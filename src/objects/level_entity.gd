@@ -5,6 +5,7 @@ extends Node2D
 @export var cell: Vector2i
 
 
+
 func _ready() -> void:
 	$MainStateSprite.texture = load(item.sprite_paths[0])
 	$AltStateSprite.texture = load(item.sprite_paths[1])

@@ -16,5 +16,3 @@ func route(cell: Vector2i):
 	if cell == Vector2i(8, 7):
 		hide_on_next_move = true
 		$ContextHelp/ContextHelpUndo.visible = true
-	if cell == Vector2i(12, 5):
-		$Cookie.eaten()
