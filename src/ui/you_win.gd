@@ -6,4 +6,4 @@ func popup() -> void:
 
 func _ready() -> void:
 	visible = false
-	SignalBus.level_won.connect(Callable(self, "popup"))
+	SignalBus.starting_to_win.connect(Callable(self, "popup"))
