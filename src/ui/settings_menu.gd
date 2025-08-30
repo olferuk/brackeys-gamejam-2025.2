@@ -6,13 +6,13 @@ extends Control
 
 
 func _on_music_slider_value_changed(value: float) -> void:
-	Global.musicLevel = value
+	Global.music_level = value
 
 func _on_sound_effects_slider_value_changed(value: float) -> void:
-	Global.soundLevel = value
+	Global.sound_level = value
 
 func _on_master_slider_value_changed(value: float) -> void:
-	Global.masterLevel = value
+	Global.master_level = value
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

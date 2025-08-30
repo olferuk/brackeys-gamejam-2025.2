@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dja0aem7egql4"]
+
+[ext_resource type="Script" uid="uid://dfyuuv7k7gvak" path="res://src/objects/mole.gd" id="1_7tb6c"]
+[ext_resource type="Texture2D" uid="uid://cpeuqtfhyqsyb" path="res://vfx/levels/mole.png" id="1_cs451"]
+
+[node name="Mole" type="Node2D"]
+script = ExtResource("1_7tb6c")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_cs451")
+centered = false

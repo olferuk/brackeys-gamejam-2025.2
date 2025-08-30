@@ -38,6 +38,7 @@ func _ready() -> void:
 			head_index = 2
 		current_length += 1
 	prev_direction = Vector2i.RIGHT
+	print(current_length)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if is_in_progress:
@@ -152,11 +153,13 @@ func _execute_stretch() -> bool:
 func _execute_shrink() -> bool:
 	if current_length - 1 < minimal_length:
 		return false
+	
 	while current_length > minimal_length:
 		occupied_cells.remove_at(0)
 		_rebuild_sprites()
 		current_length = occupied_cells.size()
 	$Sounds/ShrinkSound.play()
+	SignalBus.cell_visited.emit(head_coords)
 	return true
 
 func _execute_move(direction: Vector2i) -> bool:

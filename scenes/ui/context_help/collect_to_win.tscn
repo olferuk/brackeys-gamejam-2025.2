@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpl6q4kj3e8mh"]
+
+[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="1_kxje7"]
+
+[node name="CollectToWin" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("1_kxje7")
+text = "Collect to win!"
