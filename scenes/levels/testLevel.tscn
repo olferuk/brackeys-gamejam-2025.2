@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b7fhnivvbba5g"]
+[gd_scene load_steps=13 format=4 uid="uid://b7fhnivvbba5g"]
 
 [ext_resource type="Script" uid="uid://k1k557t7o5us" path="res://src/levels/level_01.gd" id="1_snsj5"]
 [ext_resource type="PackedScene" uid="uid://mdrq5w8asrmt" path="res://scenes/skybox.tscn" id="2_r1b2b"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cm0e12th4r6sb" path="res://scenes/ui/you_win.tscn" id="7_b1qtw"]
 [ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="8_ce6vt"]
 [ext_resource type="PackedScene" uid="uid://cqdix7yuxkvhp" path="res://scenes/objects/key.tscn" id="9_p2rlp"]
+[ext_resource type="PackedScene" uid="uid://bepb21ret8k4v" path="res://scenes/objects/door_with_keys.tscn" id="10_tdyds"]
 [ext_resource type="PackedScene" uid="uid://ddig6qrgjwtgm" path="res://scenes/objects/door_with_buttons.tscn" id="10_vhdi7"]
 [ext_resource type="PackedScene" uid="uid://chcnwbbuotral" path="res://scenes/objects/button.tscn" id="11_tdyds"]
 
@@ -46,17 +47,24 @@ position = Vector2(800, 256)
 position = Vector2(798, 353)
 
 [node name="Key" parent="Items" instance=ExtResource("9_p2rlp")]
-position = Vector2(350, 294)
+position = Vector2(541, 416)
+
+[node name="Key2" parent="Items" instance=ExtResource("9_p2rlp")]
+position = Vector2(614, 430)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 320)
 
 [node name="DoorButtons" parent="." node_paths=PackedStringArray("buttons") instance=ExtResource("10_vhdi7")]
-position = Vector2(738, 362)
+position = Vector2(901, 45)
 buttons = [NodePath("../Button"), NodePath("../Button2")]
 
 [node name="Button" parent="." instance=ExtResource("11_tdyds")]
-position = Vector2(403, 431)
+position = Vector2(707, 123)
 
 [node name="Button2" parent="." instance=ExtResource("11_tdyds")]
-position = Vector2(617, 433)
+position = Vector2(652, 92)
+
+[node name="DoorWithKeys" parent="." node_paths=PackedStringArray("keys") instance=ExtResource("10_tdyds")]
+position = Vector2(734, 376)
+keys = [NodePath("../Items/Key"), NodePath("../Items/Key2")]

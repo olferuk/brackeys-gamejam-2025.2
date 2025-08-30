@@ -331,3 +331,6 @@ func _extract_sprite(ts: TileMapLayer, atlas_coords: Vector2i) -> Sprite2D:
 
 func is_occupied(cell: Vector2i) -> bool:
 	return occupied_cells.has(MapManager._dog_cell(cell))
+
+func get_head_position() -> Vector2i:
+	return occupied_cells.back()

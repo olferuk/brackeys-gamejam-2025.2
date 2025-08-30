@@ -1,4 +1,7 @@
+class_name Key
 extends Entity
+
+var collected = false
 
 func trigger():
 	$CollectSound.play()
@@ -11,4 +14,9 @@ func trigger():
 	)
 	await tween.finished
 	print("Key collected")
-	queue_free()
+	visible = false
+	collected = true
+	#queue_free()
+
+func is_collected() -> bool:
+	return collected
