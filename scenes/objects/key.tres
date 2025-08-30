@@ -3,8 +3,12 @@
 [ext_resource type="Script" uid="uid://bll3pqu3501sg" path="res://resources/item.gd" id="1_jh787"]
 
 [resource]
+resource_name = "dasd"
 script = ExtResource("1_jh787")
 name = "Key"
-sprite_paths = Array[String](["res://vfx/items/key.png"])
-floaty = true
+sprite_paths = Array[String](["res://vfx/items/key.png", "res://vfx/items/key.png"])
+floaty = false
+pushable = false
+interactable = false
+damaging = false
 metadata/_custom_type_script = "uid://bll3pqu3501sg"

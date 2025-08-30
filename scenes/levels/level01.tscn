@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://n3bt253b7pmx"]
+[gd_scene load_steps=23 format=4 uid="uid://n3bt253b7pmx"]
 
 [ext_resource type="Texture2D" uid="uid://u8nfmhqmjjyv" path="res://vfx/levels/sky.png" id="1_g0jr5"]
 [ext_resource type="Script" uid="uid://k1k557t7o5us" path="res://src/level.gd" id="1_qwlqn"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://ckrvsdw10np0i" path="res://vfx/levels/clouds/Cloud6.png" id="10_xp2r0"]
 [ext_resource type="Texture2D" uid="uid://dubw8kay1kdvr" path="res://vfx/levels/clouds/Cloud7.png" id="11_k1t3p"]
 [ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="13_qonbx"]
+[ext_resource type="Script" uid="uid://p013c48wdf4d" path="res://src/objects/level_entity.gd" id="14_k1t3p"]
+[ext_resource type="Resource" uid="uid://cinrhc1otbuxl" path="res://scenes/objects/key.tres" id="15_keymb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5qli"]
 texture = ExtResource("2_i4uh8")
@@ -323,3 +325,14 @@ texture = ExtResource("11_k1t3p")
 
 [node name="Cookie" parent="." instance=ExtResource("13_qonbx")]
 position = Vector2(800, 352)
+
+[node name="LevelEntity" type="Node2D" parent="."]
+position = Vector2(332, 125)
+script = ExtResource("14_k1t3p")
+item = ExtResource("15_keymb")
+cell = Vector2i(6, 6)
+metadata/_custom_type_script = "uid://p013c48wdf4d"
+
+[node name="MainStateSprite" type="Sprite2D" parent="LevelEntity"]
+
+[node name="AltStateSprite" type="Sprite2D" parent="LevelEntity"]
