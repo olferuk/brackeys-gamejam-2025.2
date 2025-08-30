@@ -11,7 +11,7 @@ func _ready() -> void:
 	super._ready()
 
 func player_moved() -> void:
-	if MapManager.is_occupied_by_dog(cell):
+	if MapManager.is_occupied_by_dog(cell) and !_hidden:
 		SignalBus.emit_signal("level_lost")
 	if _moving:
 		_hidden = !_hidden
