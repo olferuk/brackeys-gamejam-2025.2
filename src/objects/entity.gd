@@ -2,6 +2,7 @@ class_name Entity
 extends Node2D
 
 @export var cell: Vector2i
+
 @export_group("Capabilities")
 @export var pushable: bool = false
 @export var interactable: bool = false

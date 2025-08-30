@@ -6,15 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://cn8muomcp756l" path="res://scenes/ui/context_help/context_help_wasd.tscn" id="3_qwlqn"]
 [ext_resource type="PackedScene" uid="uid://dtvv1vd08dxpi" path="res://scenes/player/hound.tscn" id="4_i4uh8"]
 [ext_resource type="PackedScene" uid="uid://dshcg6ttrayfs" path="res://scenes/ui/context_help/context_help_undo.tscn" id="6_chssp"]
-[ext_resource type="PackedScene" uid="uid://c4x6ouenkxaxn" path="res://scenes/ui/win_banner.tscn" id="7_k1t3p"]
 [ext_resource type="Texture2D" uid="uid://1d8lc8xwit3p" path="res://vfx/levels/clouds/Cloud1.png" id="7_y32f7"]
 [ext_resource type="Texture2D" uid="uid://f64tovj42vlf" path="res://vfx/levels/clouds/Cloud2.png" id="8_cd15k"]
+[ext_resource type="PackedScene" uid="uid://cm0e12th4r6sb" path="res://scenes/ui/you_win.tscn" id="8_if0f4"]
 [ext_resource type="Shader" uid="uid://bomwc7ier3v6e" path="res://src/shaders/sine_float.gdshader" id="8_qonbx"]
 [ext_resource type="Texture2D" uid="uid://dxkj5ix5hbbu8" path="res://vfx/levels/clouds/Cloud4.png" id="9_qonbx"]
 [ext_resource type="Texture2D" uid="uid://ckrvsdw10np0i" path="res://vfx/levels/clouds/Cloud6.png" id="10_xp2r0"]
 [ext_resource type="Texture2D" uid="uid://dubw8kay1kdvr" path="res://vfx/levels/clouds/Cloud7.png" id="11_k1t3p"]
 [ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="13_qonbx"]
-[ext_resource type="PackedScene" uid="uid://dhlnruax2xwcf" path="res://scenes/objects/key.tscn" id="16_keymb"]
+[ext_resource type="PackedScene" uid="uid://cqdix7yuxkvhp" path="res://scenes/objects/key.tscn" id="16_keymb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5qli"]
 texture = ExtResource("2_i4uh8")
@@ -264,8 +264,6 @@ shader_parameter/sine_speed = Vector2(0, 2)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qwlqn")
-metadata/_edit_horizontal_guides_ = [320.256, 383.695, 352.15]
-metadata/_edit_vertical_guides_ = [800.114]
 
 [node name="Sky" type="Sprite2D" parent="."]
 position = Vector2(568.161, 105.079)
@@ -294,12 +292,9 @@ offset_bottom = 95.0
 visible = false
 position = Vector2(541.752, 557.818)
 
-[node name="WinSprite" type="Sprite2D" parent="ContextHelp"]
-
-[node name="YouWin" type="Sprite2D" parent="ContextHelp"]
-position = Vector2(597, 550)
-
-[node name="WinBanner" parent="ContextHelp" instance=ExtResource("7_k1t3p")]
+[node name="YouWin" parent="ContextHelp" instance=ExtResource("8_if0f4")]
+visible = false
+position = Vector2(800, 256)
 
 [node name="Clouds" type="Node2D" parent="."]
 
