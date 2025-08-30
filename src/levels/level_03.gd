@@ -18,4 +18,4 @@ func show_you_win():
 	$UI/YouWin.popup()
 
 func onto_next_level():
-	print("Loading level 3")
+	print("Loading level 4")

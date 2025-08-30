@@ -1,50 +1,62 @@
-[gd_scene load_steps=10 format=4 uid="uid://n3bt253b7pmx"]
+[gd_scene load_steps=12 format=4 uid="uid://b7fhnivvbba5g"]
 
-[ext_resource type="Script" uid="uid://k1k557t7o5us" path="res://src/levels/level_01.gd" id="1_qwlqn"]
-[ext_resource type="PackedScene" uid="uid://mdrq5w8asrmt" path="res://scenes/skybox.tscn" id="2_3yqkj"]
-[ext_resource type="PackedScene" uid="uid://cn8muomcp756l" path="res://scenes/ui/context_help/context_help_wasd.tscn" id="3_qwlqn"]
-[ext_resource type="TileSet" uid="uid://b7cwapb35fjoj" path="res://vfx/tunnels_tileset.tres" id="3_ylsda"]
-[ext_resource type="PackedScene" uid="uid://dtvv1vd08dxpi" path="res://scenes/player/hound.tscn" id="4_i4uh8"]
-[ext_resource type="PackedScene" uid="uid://dshcg6ttrayfs" path="res://scenes/ui/context_help/context_help_undo.tscn" id="6_chssp"]
-[ext_resource type="PackedScene" uid="uid://cm0e12th4r6sb" path="res://scenes/ui/you_win.tscn" id="8_if0f4"]
-[ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="13_qonbx"]
-[ext_resource type="PackedScene" uid="uid://cqdix7yuxkvhp" path="res://scenes/objects/key.tscn" id="16_keymb"]
+[ext_resource type="Script" uid="uid://k1k557t7o5us" path="res://src/levels/level_01.gd" id="1_snsj5"]
+[ext_resource type="PackedScene" uid="uid://mdrq5w8asrmt" path="res://scenes/skybox.tscn" id="2_r1b2b"]
+[ext_resource type="TileSet" uid="uid://b7cwapb35fjoj" path="res://vfx/tunnels_tileset.tres" id="3_vhdi7"]
+[ext_resource type="PackedScene" uid="uid://dtvv1vd08dxpi" path="res://scenes/player/hound.tscn" id="4_tdyds"]
+[ext_resource type="PackedScene" uid="uid://cn8muomcp756l" path="res://scenes/ui/context_help/context_help_wasd.tscn" id="5_tibsv"]
+[ext_resource type="PackedScene" uid="uid://dshcg6ttrayfs" path="res://scenes/ui/context_help/context_help_undo.tscn" id="6_mqd40"]
+[ext_resource type="PackedScene" uid="uid://cm0e12th4r6sb" path="res://scenes/ui/you_win.tscn" id="7_b1qtw"]
+[ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="8_ce6vt"]
+[ext_resource type="PackedScene" uid="uid://cqdix7yuxkvhp" path="res://scenes/objects/key.tscn" id="9_p2rlp"]
+[ext_resource type="PackedScene" uid="uid://ddig6qrgjwtgm" path="res://scenes/objects/door_with_buttons.tscn" id="10_vhdi7"]
+[ext_resource type="PackedScene" uid="uid://chcnwbbuotral" path="res://scenes/objects/button.tscn" id="11_tdyds"]
 
 [node name="Level01" type="Node2D"]
-script = ExtResource("1_qwlqn")
+script = ExtResource("1_snsj5")
 
-[node name="Skybox" parent="." instance=ExtResource("2_3yqkj")]
+[node name="Skybox" parent="." instance=ExtResource("2_r1b2b")]
 
 [node name="GroundTileMapLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAEAAIAAAAAAAEAAAAFAAIAAAAAAAIAAAAGAAIAAAABAAEAAAAHAAIAAAABAAAAAAAIAAIAAAABAAAAAAAJAAIAAAABAAAAAAAKAAIAAAABAAAAAAALAAIAAAABAAAAAAAMAAIAAAABAAAAAAANAAIAAAABAAAAAAAOAAIAAAABAAAAAAAPAAIAAAABAAAAAAAQAAIAAAABAAAAAAARAAIAAAABAAAAAAASAAIAAAABAAAAAAADAAIAAAABAAAAAAACAAIAAAABAAAAAAABAAIAAAABAAAAAAAAAAIAAAABAAAAAAAOAAMAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAMAAAAAAAAAAAARAAMAAAAAAAAAAAASAAMAAAAAAAAAAAARAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAASAAQAAAAAAAAAAAASAAUAAAAAAAAAAAARAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAACAAgAAAAAAAAAAAABAAoAAAAAAAAAAAACAAkAAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAEAAkAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAACAAIAAAAIAAgAAAADAAIAAAAJAAgAAAAEAAIAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAPAAcAAAAAAAAAAAARAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAASAAcAAAAAAAAAAAASAAgAAAAAAAAAAAARAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAASAAkAAAAAAAAAAAARAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAEAAQAAAACAAEAAAAEAAUAAAACAAIAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAQAAAADAAEAAAAFAAUAAAAGAAIAAAAFAAYAAAACAAEAAAAFAAcAAAACAAIAAAAGAAQAAAADAAEAAAAGAAUAAAADAAEAAAAGAAYAAAADAAEAAAAGAAcAAAADAAIAAAAHAAQAAAAEAAEAAAAHAAUAAAAFAAMAAAAHAAYAAAADAAEAAAAHAAcAAAAGAAIAAAAIAAQAAAAAAAAAAAAIAAUAAAADAAAAAAAIAAYAAAADAAEAAAAIAAcAAAADAAEAAAAJAAQAAAACAAAAAAAJAAUAAAAGAAMAAAAJAAYAAAADAAEAAAAJAAcAAAAFAAIAAAAKAAQAAAADAAAAAAAKAAUAAAADAAEAAAAKAAYAAAADAAEAAAAKAAcAAAADAAIAAAALAAQAAAADAAAAAAALAAUAAAADAAEAAAALAAYAAAAFAAIAAAALAAcAAAAEAAIAAAAMAAQAAAADAAAAAAAMAAUAAAADAAEAAAAMAAYAAAADAAIAAAAMAAcAAAAAAAAAAAANAAQAAAAEAAAAAAANAAUAAAAEAAEAAAANAAYAAAAEAAIAAAANAAcAAAAAAAAAAAAGAAMAAAAFAAMAAAAHAAMAAAAEAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAFAAMAAAADAAEAAAAEAAMAAAACAAEAAAACAAsAAAAAAAAAAAADAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAAAAAAAAAALAAsAAAAAAAAAAAAMAAsAAAAAAAAAAAANAAsAAAAAAAAAAAAOAAsAAAAAAAAAAAAPAAsAAAAAAAAAAAA=")
-tile_set = ExtResource("3_ylsda")
+tile_set = ExtResource("3_vhdi7")
 
-[node name="Hound" parent="." instance=ExtResource("4_i4uh8")]
+[node name="Hound" parent="." instance=ExtResource("4_tdyds")]
 position = Vector2(192, 128)
 
 [node name="ContextHelp" type="Node2D" parent="."]
 
-[node name="ContextHelpWasd" parent="ContextHelp" instance=ExtResource("3_qwlqn")]
+[node name="ContextHelpWasd" parent="ContextHelp" instance=ExtResource("5_tibsv")]
 offset_left = 495.5
 offset_top = 64.0
 offset_right = 632.5
 offset_bottom = 95.0
 
-[node name="ContextHelpUndo" parent="ContextHelp" instance=ExtResource("6_chssp")]
+[node name="ContextHelpUndo" parent="ContextHelp" instance=ExtResource("6_mqd40")]
 visible = false
 position = Vector2(541.752, 557.818)
 
-[node name="YouWin" parent="ContextHelp" instance=ExtResource("8_if0f4")]
+[node name="YouWin" parent="ContextHelp" instance=ExtResource("7_b1qtw")]
 visible = false
 position = Vector2(800, 256)
 
 [node name="Items" type="Node" parent="."]
 
-[node name="Cookie" parent="Items" instance=ExtResource("13_qonbx")]
+[node name="Cookie" parent="Items" instance=ExtResource("8_ce6vt")]
 position = Vector2(798, 353)
 
-[node name="Key" parent="Items" instance=ExtResource("16_keymb")]
-position = Vector2(424, 417)
+[node name="Key" parent="Items" instance=ExtResource("9_p2rlp")]
+position = Vector2(350, 294)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 320)
+
+[node name="DoorButtons" parent="." node_paths=PackedStringArray("buttons") instance=ExtResource("10_vhdi7")]
+position = Vector2(738, 362)
+buttons = [NodePath("../Button"), NodePath("../Button2")]
+
+[node name="Button" parent="." instance=ExtResource("11_tdyds")]
+position = Vector2(403, 431)
+
+[node name="Button2" parent="." instance=ExtResource("11_tdyds")]
+position = Vector2(617, 433)

@@ -1,11 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhlnruax2xwcf"]
+[gd_scene load_steps=6 format=3 uid="uid://cqdix7yuxkvhp"]
 
 [ext_resource type="Texture2D" uid="uid://c8ahyd376vw82" path="res://vfx/items/key.png" id="1_7dc8w"]
 [ext_resource type="Script" uid="uid://bug463lsqmy66" path="res://src/objects/key.gd" id="1_xg6wr"]
+[ext_resource type="Shader" uid="uid://bomwc7ier3v6e" path="res://src/shaders/sine_float.gdshader" id="2_nghci"]
+[ext_resource type="AudioStream" uid="uid://byylkq08sv4bg" path="res://sfx/key_collect.mp3" id="4_76smn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76smn"]
+resource_local_to_scene = true
+shader = ExtResource("2_nghci")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = false
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(0, 3)
+shader_parameter/sine_speed = Vector2(0, 1.5)
 
 [node name="Key" type="Node2D"]
 script = ExtResource("1_xg6wr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_76smn")
 texture = ExtResource("1_7dc8w")
 offset = Vector2(0, -16.845)
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_76smn")

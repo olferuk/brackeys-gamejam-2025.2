@@ -37,7 +37,7 @@ func _ready() -> void:
 			head_coords = cell_coords
 			head_index = 2
 		current_length += 1
-
+	print(occupied_cells)
 	prev_direction = Vector2i.RIGHT
 
 func _unhandled_input(event: InputEvent) -> void:
