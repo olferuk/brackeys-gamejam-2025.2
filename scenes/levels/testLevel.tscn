@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dshcg6ttrayfs" path="res://scenes/ui/context_help/context_help_undo.tscn" id="6_mqd40"]
 [ext_resource type="PackedScene" uid="uid://cm0e12th4r6sb" path="res://scenes/ui/you_win.tscn" id="7_b1qtw"]
 [ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="8_ce6vt"]
-[ext_resource type="PackedScene" uid="uid://cqdix7yuxkvhp" path="res://scenes/objects/key.tscn" id="9_p2rlp"]
 [ext_resource type="PackedScene" uid="uid://bepb21ret8k4v" path="res://scenes/objects/door_with_keys.tscn" id="10_tdyds"]
 [ext_resource type="PackedScene" uid="uid://ddig6qrgjwtgm" path="res://scenes/objects/door_with_buttons.tscn" id="10_vhdi7"]
 [ext_resource type="PackedScene" uid="uid://chcnwbbuotral" path="res://scenes/objects/button.tscn" id="11_tdyds"]
+[ext_resource type="PackedScene" uid="uid://bfflnav2qus7k" path="res://scenes/objects/spikes.tscn" id="13_tibsv"]
 
 [node name="Level01" type="Node2D"]
 script = ExtResource("1_snsj5")
@@ -24,8 +24,6 @@ tile_set = ExtResource("3_vhdi7")
 
 [node name="Hound" parent="." instance=ExtResource("4_tdyds")]
 position = Vector2(192, 128)
-maximum_length = 7
-minimal_length = 3
 
 [node name="ContextHelp" type="Node2D" parent="."]
 
@@ -48,12 +46,6 @@ position = Vector2(800, 256)
 [node name="Cookie" parent="Items" instance=ExtResource("8_ce6vt")]
 position = Vector2(798, 353)
 
-[node name="Key" parent="Items" instance=ExtResource("9_p2rlp")]
-position = Vector2(541, 416)
-
-[node name="Key2" parent="Items" instance=ExtResource("9_p2rlp")]
-position = Vector2(614, 430)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 320)
 
@@ -69,4 +61,9 @@ position = Vector2(652, 92)
 
 [node name="DoorWithKeys" parent="." node_paths=PackedStringArray("keys") instance=ExtResource("10_tdyds")]
 position = Vector2(734, 376)
-keys = [NodePath("../Items/Key"), NodePath("../Items/Key2")]
+keys = [null, null]
+
+[node name="Spikes" parent="." instance=ExtResource("13_tibsv")]
+position = Vector2(546, 477)
+scale = Vector2(2, 2)
+_moving = true

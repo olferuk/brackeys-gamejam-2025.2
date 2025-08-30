@@ -10,7 +10,7 @@ func player_moved() -> void:
 		return
 	var keys_collected = true
 	for key in keys:
-		if !key.is_collected():
+		if (key != null) and !key.is_collected():
 			keys_collected = false
 			break
 	if keys_collected:
