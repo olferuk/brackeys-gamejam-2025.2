@@ -13,6 +13,7 @@ func _ready() -> void:
 	level_lost.connect(Callable(self, "_on_level_lost"))
 	cell_visited.connect(Callable(self, "_on_cell_visited"))
 
+
 func _on_restart_game() -> void:
 	Transition.reload_scene()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://n3bt253b7pmx"]
+[gd_scene load_steps=23 format=4 uid="uid://n3bt253b7pmx"]
 
 [ext_resource type="Texture2D" uid="uid://u8nfmhqmjjyv" path="res://vfx/levels/sky.png" id="1_g0jr5"]
 [ext_resource type="Script" uid="uid://k1k557t7o5us" path="res://src/level.gd" id="1_qwlqn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cn8muomcp756l" path="res://scenes/ui/context_help/context_help_wasd.tscn" id="3_qwlqn"]
 [ext_resource type="PackedScene" uid="uid://dtvv1vd08dxpi" path="res://scenes/player/hound.tscn" id="4_i4uh8"]
 [ext_resource type="PackedScene" uid="uid://dshcg6ttrayfs" path="res://scenes/ui/context_help/context_help_undo.tscn" id="6_chssp"]
+[ext_resource type="PackedScene" uid="uid://c4x6ouenkxaxn" path="res://scenes/ui/win_banner.tscn" id="7_k1t3p"]
 [ext_resource type="Texture2D" uid="uid://1d8lc8xwit3p" path="res://vfx/levels/clouds/Cloud1.png" id="7_y32f7"]
 [ext_resource type="Texture2D" uid="uid://f64tovj42vlf" path="res://vfx/levels/clouds/Cloud2.png" id="8_cd15k"]
 [ext_resource type="Shader" uid="uid://bomwc7ier3v6e" path="res://src/shaders/sine_float.gdshader" id="8_qonbx"]
@@ -293,6 +294,13 @@ offset_bottom = 95.0
 visible = false
 position = Vector2(541.752, 557.818)
 
+[node name="WinSprite" type="Sprite2D" parent="ContextHelp"]
+
+[node name="YouWin" type="Sprite2D" parent="ContextHelp"]
+position = Vector2(597, 550)
+
+[node name="WinBanner" parent="ContextHelp" instance=ExtResource("7_k1t3p")]
+
 [node name="Clouds" type="Node2D" parent="."]
 
 [node name="Cloud1" type="Sprite2D" parent="Clouds"]
@@ -328,4 +336,4 @@ texture = ExtResource("11_k1t3p")
 position = Vector2(798, 353)
 
 [node name="Key" parent="Items" instance=ExtResource("16_keymb")]
-position = Vector2(424, 402)
+position = Vector2(424, 417)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4x6ouenkxaxn"]
+
+[ext_resource type="Script" uid="uid://blmtiip0yudxr" path="res://src/ui/win.gd" id="1_qel36"]
+[ext_resource type="Texture2D" uid="uid://d2b342wcda8h" path="res://vfx/ui/win.png" id="2_6c4nt"]
+
+[node name="WinBanner" type="Node2D"]
+script = ExtResource("1_qel36")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_6c4nt")
