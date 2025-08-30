@@ -22,19 +22,6 @@ func trigger() -> void:
 	print("Parent")
 	pass
 
-#func _enter_tree() -> void:
-	#set_meta(&"name", item.name)
-#
-#func _exit_tree() -> void:
-	#remove_meta(&"name")
-#
-#func register() -> void:
-	#MapManager.register(self, cell)
-
-#func shake() -> void:
-	## tween for shake
-	#pass
-
 func switch_state() -> void:
 	$MainStateSprite.visible = !$MainStateSprite.visible
 	$AltStateSprite.visible = !$AltStateSprite.visible

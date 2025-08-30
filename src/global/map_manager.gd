@@ -6,7 +6,6 @@ var level: int = 1
 var dog_head_shift: Vector2i = Vector2i.ZERO
 
 var level_objects: Dictionary[Vector2i, LevelEntity]
-
 var level_entites: Dictionary[Vector2i, Entity]
 
 func _real_cell(cell: Vector2i) -> Vector2i:
@@ -16,7 +15,7 @@ func _real_cell(cell: Vector2i) -> Vector2i:
 
 #func register(entity: LevelEntity, cell: Vector2i) -> void: 
 	#level_objects[cell] = entity
-	
+
 func register2(entity: Entity, cell: Vector2i) -> void: 
 	SignalBus.cell_visited.connect(entity._on_cell_visited)
 	level_entites[cell] = entity
@@ -42,6 +41,5 @@ func get_entitity(cell: Vector2i) -> Node:
 	return level_entites[cell]
 	
 func position_to_cell(position: Vector2i) -> Vector2i:
-	position = position / 64
-	position = Vector2i(position.x, position.y)
-	return position
+	position = position / int(Global.cell_size)
+	return Vector2i(position.x, position.y)

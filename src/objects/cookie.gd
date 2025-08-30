@@ -8,6 +8,7 @@ func _ready() -> void:
 func trigger():
 	$WinBiinnnn.play()
 	$WinCrunch.play()
+	SignalBus.starting_to_win.emit()
 	
 	$Snack.texture = textures[1]
 	
