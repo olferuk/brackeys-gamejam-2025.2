@@ -13,14 +13,13 @@ func _ready() -> void:
 	print("Position", MapManager.position_to_cell(position))
 	cell = MapManager.position_to_cell(position)
 	MapManager.register2(self, cell)
-	
+
 func _on_cell_visited(visited_cell: Vector2i) -> void:
 	if visited_cell == cell:
 		trigger()
 
 func trigger() -> void:
 	print("Parent")
-	pass
 
 func switch_state() -> void:
 	$MainStateSprite.visible = !$MainStateSprite.visible
