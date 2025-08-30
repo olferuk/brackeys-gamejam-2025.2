@@ -6,7 +6,7 @@ extends Node2D
 @export var pushable: bool = false
 @export var interactable: bool = false
 @export var damaging: bool = false
-
+@export var walkable: bool = true
 
 func _ready() -> void:
 	print("Position", MapManager.position_to_cell(position))
@@ -14,6 +14,7 @@ func _ready() -> void:
 	MapManager.register2(self, cell)
 	
 func _on_cell_visited(visited_cell: Vector2i) -> void:
+	player_moved()
 	if visited_cell == cell:
 		trigger()
 
@@ -21,6 +22,8 @@ func trigger() -> void:
 	print("Parent")
 	pass
 
+func player_moved() -> void:
+	pass
 #func _enter_tree() -> void:
 	#set_meta(&"name", item.name)
 #

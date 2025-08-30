@@ -328,3 +328,6 @@ func _extract_sprite(ts: TileMapLayer, atlas_coords: Vector2i) -> Sprite2D:
 	spr.texture = _extract_texture(ts, atlas_coords);
 	spr.centered = false
 	return spr
+
+func is_occupied(cell: Vector2i) -> bool:
+	return occupied_cells.has(MapManager._dog_cell(cell))

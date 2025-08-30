@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://n3bt253b7pmx"]
+[gd_scene load_steps=25 format=4 uid="uid://n3bt253b7pmx"]
 
 [ext_resource type="Texture2D" uid="uid://u8nfmhqmjjyv" path="res://vfx/levels/sky.png" id="1_g0jr5"]
 [ext_resource type="Script" uid="uid://k1k557t7o5us" path="res://src/levels/level_01.gd" id="1_qwlqn"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://dubw8kay1kdvr" path="res://vfx/levels/clouds/Cloud7.png" id="11_k1t3p"]
 [ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="13_qonbx"]
 [ext_resource type="PackedScene" uid="uid://dhlnruax2xwcf" path="res://scenes/objects/key.tscn" id="16_keymb"]
+[ext_resource type="PackedScene" uid="uid://chcnwbbuotral" path="res://scenes/objects/button.tscn" id="16_ovdkn"]
+[ext_resource type="PackedScene" uid="uid://ddig6qrgjwtgm" path="res://scenes/objects/door_with_buttons.tscn" id="17_ovdkn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o5qli"]
 texture = ExtResource("2_i4uh8")
@@ -336,4 +338,17 @@ texture = ExtResource("11_k1t3p")
 position = Vector2(798, 353)
 
 [node name="Key" parent="Items" instance=ExtResource("16_keymb")]
-position = Vector2(424, 417)
+position = Vector2(356, 272)
+
+[node name="Button" parent="Items" instance=ExtResource("16_ovdkn")]
+position = Vector2(404, 432)
+hold_press = true
+
+[node name="Button2" parent="Items" instance=ExtResource("16_ovdkn")]
+position = Vector2(611, 432)
+hold_press = true
+
+[node name="DoorButtons" parent="Items" node_paths=PackedStringArray("buttons") instance=ExtResource("17_ovdkn")]
+position = Vector2(738, 363)
+buttons = [NodePath("../Button"), NodePath("../Button2")]
+walkable = false

@@ -5,7 +5,7 @@ var map: TileMapLayer
 var level: int = 1
 var dog_head_shift: Vector2i = Vector2i.ZERO
 
-var level_objects: Dictionary[Vector2i, LevelEntity]
+#var level_objects: Dictionary[Vector2i, LevelEntity]
 
 var level_entites: Dictionary[Vector2i, Entity]
 
@@ -13,6 +13,9 @@ func _real_cell(cell: Vector2i) -> Vector2i:
 	# CELL is dog-first coordinate system
 	# REAL CELL is map-first
 	return cell + dog_head_shift
+
+func _dog_cell(cell: Vector2i) -> Vector2i:
+	return cell - dog_head_shift
 
 #func register(entity: LevelEntity, cell: Vector2i) -> void: 
 	#level_objects[cell] = entity
@@ -30,10 +33,13 @@ func is_walkable(cell: Vector2i) -> bool:
 		var walkable: bool = tile_data.get_custom_data("walkable") as bool
 		if not walkable:
 			return walkable
-		var obj = level_objects.get(_real_cell(cell))
+		var obj = level_entites.get(_real_cell(cell))
 		if obj == null:
 			return true
-		return (obj as LevelEntity).pushable
+		return (obj as Entity).walkable
+
+func is_occupied_by_dog(cell: Vector2i) -> bool:
+	return player.is_occupied(cell)
 
 func visit(cell: Vector2i):
 	SignalBus.cell_visited.emit(_real_cell(cell))
