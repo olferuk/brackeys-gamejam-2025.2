@@ -1,16 +1,12 @@
 extends Entity
+
 @export var textures: Array[Texture2D] 
 
-func _ready() -> void:
-	super._ready()
-	$Snack.texture = textures[0]
 
 func trigger():
 	$WinBiinnnn.play()
 	$WinCrunch.play()
 	SignalBus.starting_to_win.emit()
-	
-	$Snack.texture = textures[1]
 	
 	var tween: Tween = create_tween()
 	(

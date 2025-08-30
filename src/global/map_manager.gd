@@ -7,6 +7,7 @@ var dog_head_shift: Vector2i = Vector2i.ZERO
 
 var level_entites: Dictionary[Vector2i, Entity]
 
+
 func _real_cell(cell: Vector2i) -> Vector2i:
 	# CELL is dog-first coordinate system
 	# REAL CELL is map-first
@@ -15,10 +16,7 @@ func _real_cell(cell: Vector2i) -> Vector2i:
 func _dog_cell(cell: Vector2i) -> Vector2i:
 	return cell - dog_head_shift
 
-#func register(entity: LevelEntity, cell: Vector2i) -> void: 
-	#level_objects[cell] = entity
-
-func register2(entity: Entity, cell: Vector2i) -> void: 
+func register(entity: Entity, cell: Vector2i) -> void: 
 	SignalBus.cell_visited.connect(entity._on_cell_visited)
 	level_entites[cell] = entity
 

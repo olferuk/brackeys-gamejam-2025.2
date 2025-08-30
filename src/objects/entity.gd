@@ -12,7 +12,7 @@ extends Node2D
 func _ready() -> void:
 	print("Position", MapManager.position_to_cell(position))
 	cell = MapManager.position_to_cell(position)
-	MapManager.register2(self, cell)
+	MapManager.register(self, cell)
 
 func _on_cell_visited(visited_cell: Vector2i) -> void:
 	player_moved()
@@ -25,18 +25,6 @@ func trigger() -> void:
 
 func player_moved() -> void:
 	pass
-#func _enter_tree() -> void:
-	#set_meta(&"name", item.name)
-#
-#func _exit_tree() -> void:
-	#remove_meta(&"name")
-#
-#func register() -> void:
-	#MapManager.register(self, cell)
-
-#func shake() -> void:
-	## tween for shake
-	#pass
 
 func switch_state() -> void:
 	$MainStateSprite.visible = !$MainStateSprite.visible

@@ -36,6 +36,8 @@ walkable = false
 [node name="Hound" parent="." instance=ExtResource("3_mxx8o")]
 z_index = 10
 position = Vector2(0, 128)
+maximum_length = 5
+minimal_length = 3
 
 [node name="UI" type="Node2D" parent="."]
 

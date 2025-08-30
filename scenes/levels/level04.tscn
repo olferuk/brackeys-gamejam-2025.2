@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bcljcksx4bj4m"]
+[gd_scene load_steps=10 format=4 uid="uid://bcljcksx4bj4m"]
 
 [ext_resource type="Script" uid="uid://1maic7ahspal" path="res://src/levels/level_04.gd" id="1_gjd8t"]
 [ext_resource type="PackedScene" uid="uid://mdrq5w8asrmt" path="res://scenes/skybox.tscn" id="1_y1wi2"]
@@ -8,9 +8,23 @@
 [ext_resource type="PackedScene" uid="uid://cm0e12th4r6sb" path="res://scenes/ui/you_win.tscn" id="4_534pv"]
 [ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="5_aoybf"]
 [ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="8_63ajt"]
+[ext_resource type="PackedScene" uid="uid://diuel85yw1g7m" path="res://scenes/ui/context_help/context_help_restart.tscn" id="9_qqxap"]
 
 [node name="Level04" type="Node2D"]
 script = ExtResource("1_gjd8t")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(384, 384)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+visible = false
+
+[node name="TextureRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Skybox" parent="." instance=ExtResource("1_y1wi2")]
 position = Vector2(-242, 40)
@@ -34,14 +48,22 @@ maximum_length = 5
 
 [node name="UI" type="Node" parent="."]
 
+[node name="ContextHelpRestart" parent="UI" instance=ExtResource("9_qqxap")]
+visible = false
+offset_left = 512.0
+offset_top = 640.0
+offset_right = 797.0
+offset_bottom = 705.0
+
 [node name="YouWin" parent="UI" instance=ExtResource("4_534pv")]
 visible = false
 position = Vector2(96, 608)
 
-[node name="Label" type="Label" parent="."]
-offset_left = 256.0
-offset_top = 448.0
-offset_right = 340.0
-offset_bottom = 479.0
+[node name="Hide" type="Node2D" parent="UI"]
+position = Vector2(256, 448)
+
+[node name="HideLabel" type="Label" parent="UI/Hide"]
+offset_right = 84.0
+offset_bottom = 31.0
 theme = ExtResource("8_63ajt")
 text = "HIDE HERE"

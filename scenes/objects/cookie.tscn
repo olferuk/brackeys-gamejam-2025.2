@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wy3js81uc1gp" path="res://src/objects/cookie.gd" id="1_3ig0n"]
 [ext_resource type="Shader" uid="uid://baly3q7ghlw85" path="res://src/shaders/radial_shine.gdshader" id="1_apouq"]
 [ext_resource type="Texture2D" uid="uid://bo6ekggchdwdp" path="res://vfx/ui/knob.png" id="2_3ig0n"]
-[ext_resource type="Texture2D" uid="uid://nfw7vll7bfys" path="res://vfx/knob_2.png" id="3_dsab2"]
+[ext_resource type="Texture2D" uid="uid://bcgn1bk00v5ks" path="res://vfx/items/cookie.png" id="5_melnk"]
 [ext_resource type="AudioStream" uid="uid://bfmb18y618pwv" path="res://sfx/win.mp3" id="5_nehyt"]
 [ext_resource type="AudioStream" uid="uid://c4u558sfhbvoq" path="res://sfx/win_crunch.mp3" id="6_d6iuk"]
 
@@ -23,7 +23,6 @@ shader_parameter/NOISE_magnitude = 0.0
 
 [node name="Cookie" type="Node2D"]
 script = ExtResource("1_3ig0n")
-textures = Array[Texture2D]([ExtResource("3_dsab2"), ExtResource("2_3ig0n")])
 metadata/_custom_type_script = "uid://s6bpb7m3qwgo"
 
 [node name="Rays" type="Sprite2D" parent="."]
@@ -32,8 +31,7 @@ scale = Vector2(3.6, 3.6)
 texture = ExtResource("2_3ig0n")
 
 [node name="Snack" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("3_dsab2")
+texture = ExtResource("5_melnk")
 
 [node name="WinBiinnnn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nehyt")

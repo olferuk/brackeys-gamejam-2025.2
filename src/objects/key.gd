@@ -3,8 +3,10 @@ extends Entity
 
 var collected = false
 
+
 func trigger():
-	$CollectSound.play()
+	if visible:
+		$CollectSound.play()
 	var tween: Tween = create_tween()
 	(
 		tween
@@ -16,7 +18,6 @@ func trigger():
 	print("Key collected")
 	visible = false
 	collected = true
-	#queue_free()
 
 func is_collected() -> bool:
 	return collected
