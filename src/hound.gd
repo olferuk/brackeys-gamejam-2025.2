@@ -5,7 +5,7 @@ extends Node2D
 @onready var dog_body_layer: TileMapLayer = $DogBodyLayer
 
 @export var maximum_length: int = 7
-@export var minimal_length: int = 3
+@export var minimal_length: int = 2
 
 @export var body_schema: BodySchema
 
@@ -37,7 +37,6 @@ func _ready() -> void:
 			head_coords = cell_coords
 			head_index = 2
 		current_length += 1
-	print(occupied_cells)
 	prev_direction = Vector2i.RIGHT
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -151,9 +150,9 @@ func _execute_stretch() -> bool:
 	return true
 
 func _execute_shrink() -> bool:
-	if current_length  - 1 < minimal_length:
+	if current_length - 1 < minimal_length:
 		return false
-	while current_length >= minimal_length:
+	while current_length > minimal_length:
 		occupied_cells.remove_at(0)
 		_rebuild_sprites()
 		current_length = occupied_cells.size()
