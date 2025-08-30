@@ -1,6 +1,7 @@
 extends Door
 
 @export var keys: Array[Key] = []
+var _sound_played: bool = false
 
 func player_moved() -> void:
 	if keys.is_empty():
@@ -14,3 +15,6 @@ func player_moved() -> void:
 		if MapManager.in_range_of_dog(cell, 1):
 			set_state(State.Opened)
 			sprite.texture = textures[State.Opened]
+			if not _sound_played:
+				$AudioStreamPlayer.play()
+				_sound_played = true

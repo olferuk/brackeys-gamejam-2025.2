@@ -2,7 +2,6 @@ extends Entity
 
 @export var textures: Array[Texture2D] 
 
-
 func trigger():
 	$WinBiinnnn.play()
 	$WinCrunch.play()

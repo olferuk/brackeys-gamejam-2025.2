@@ -25,13 +25,15 @@ tile_set = ExtResource("2_qulja")
 position = Vector2(672, 608)
 
 [node name="LeftButton" parent="Items" instance=ExtResource("5_vci13")]
-position = Vector2(224, 496)
+position = Vector2(288, 496)
+hold_press = true
 
 [node name="RightButton" parent="Items" instance=ExtResource("5_vci13")]
 position = Vector2(544, 496)
+hold_press = true
 
 [node name="DoorButtons" parent="Items" node_paths=PackedStringArray("buttons") instance=ExtResource("6_vgpa5")]
-position = Vector2(544, 624)
+position = Vector2(544, 616)
 buttons = [NodePath("../LeftButton"), NodePath("../RightButton")]
 
 [node name="Hound" parent="." instance=ExtResource("3_2e2pm")]

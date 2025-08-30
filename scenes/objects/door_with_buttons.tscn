@@ -1,12 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddig6qrgjwtgm"]
+[gd_scene load_steps=6 format=3 uid="uid://ddig6qrgjwtgm"]
 
 [ext_resource type="Script" uid="uid://c11oiide4nl2m" path="res://src/objects/door_with_button.gd" id="1_e4ogl"]
-[ext_resource type="Texture2D" uid="uid://wjhul83w501m" path="res://vfx/items/closed_door.png" id="2_ybok2"]
-[ext_resource type="Texture2D" uid="uid://oovt00hg2hqd" path="res://vfx/items/opened_door.png" id="3_46d6x"]
+[ext_resource type="Texture2D" uid="uid://b2hn2h6g55n7e" path="res://vfx/items/closed_door-steel.png" id="2_e4ogl"]
+[ext_resource type="Texture2D" uid="uid://ba17frpvyimv7" path="res://vfx/items/opened_door-steel.png" id="3_ybok2"]
+[ext_resource type="Texture2D" uid="uid://rbcpcnc1hp7g" path="res://vfx/items/door-light.png" id="4_46d6x"]
+[ext_resource type="Texture2D" uid="uid://ks5rv27i1wie" path="res://vfx/items/door-light-on.png" id="4_ybok2"]
 
 [node name="DoorButtons" type="Node2D"]
 script = ExtResource("1_e4ogl")
-textures = Array[Texture2D]([ExtResource("2_ybok2"), ExtResource("3_46d6x")])
+textures = Array[Texture2D]([ExtResource("2_e4ogl"), ExtResource("3_ybok2")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ybok2")
+texture = ExtResource("2_e4ogl")
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="Left" type="Node2D" parent="Lights"]
+position = Vector2(-10, 0)
+
+[node name="Off" type="Sprite2D" parent="Lights/Left"]
+texture = ExtResource("4_46d6x")
+
+[node name="On" type="Sprite2D" parent="Lights/Left"]
+visible = false
+texture = ExtResource("4_ybok2")
+
+[node name="Right" type="Node2D" parent="Lights"]
+position = Vector2(10, 0)
+
+[node name="Off" type="Sprite2D" parent="Lights/Right"]
+texture = ExtResource("4_46d6x")
+
+[node name="On" type="Sprite2D" parent="Lights/Right"]
+visible = false
+texture = ExtResource("4_ybok2")
