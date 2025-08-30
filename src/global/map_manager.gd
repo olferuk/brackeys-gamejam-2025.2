@@ -39,10 +39,10 @@ func is_walkable(cell: Vector2i) -> bool:
 func is_occupied_by_dog(cell: Vector2i) -> bool:
 	return player.is_occupied(cell)
 
-func in_range_of_dog(cell: Vector2i, range: int) -> bool:
+func in_range_of_dog(cell: Vector2i, max_dist: int) -> bool:
 	var dog_cell: Vector2i = _real_cell(player.get_head_position())
 	var dist = abs(dog_cell.x - cell.x) + abs(dog_cell.y - cell.y)
-	return dist <= range
+	return dist <= max_dist
 
 func visit(cell: Vector2i):
 	SignalBus.cell_visited.emit(_real_cell(cell))
