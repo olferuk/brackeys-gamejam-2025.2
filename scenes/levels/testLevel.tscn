@@ -24,6 +24,8 @@ tile_set = ExtResource("3_vhdi7")
 
 [node name="Hound" parent="." instance=ExtResource("4_tdyds")]
 position = Vector2(192, 128)
+maximum_length = 7
+minimal_length = 3
 
 [node name="ContextHelp" type="Node2D" parent="."]
 

@@ -141,7 +141,6 @@ func _execute_stretch() -> bool:
 	# Move head forward
 	head_coords += prev_direction
 	occupied_cells.append(head_coords)
-	occupied_cells.append(head_coords)
 	
 	current_length = occupied_cells.size()
 	_rebuild_sprites()
@@ -154,14 +153,10 @@ func _execute_stretch() -> bool:
 func _execute_shrink() -> bool:
 	if current_length  - 1 < minimal_length:
 		return false
-
-	# Remove tail segment
-	if occupied_cells.size() > 0:
+	while current_length >= minimal_length:
 		occupied_cells.remove_at(0)
 		_rebuild_sprites()
-
-	current_length = occupied_cells.size()
-
+		current_length = occupied_cells.size()
 	$Sounds/ShrinkSound.play()
 	return true
 
@@ -181,7 +176,8 @@ func _execute_move(direction: Vector2i) -> bool:
 	
 	current_length = occupied_cells.size()
 
-	occupied_cells.remove_at(0)
+	if current_length >= maximum_length:
+		occupied_cells.remove_at(0)
 	
 	_rebuild_sprites()
 	
