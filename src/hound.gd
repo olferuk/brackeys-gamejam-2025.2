@@ -23,6 +23,7 @@ var prev_direction: Vector2i = Vector2i.ZERO
 var prev_prev_direction: Vector2i = Vector2i.ZERO
 var head_coords: Vector2i = Vector2i.ZERO
 var head_index: int = 0
+var input_blocked: bool = false;
 
 var history: Array[Command] = []
 
@@ -43,7 +44,14 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if is_in_progress:
 		return
-
+	
+	if event.is_action_pressed("RestartLevel"):
+		$Sounds/WhooshSound.play()
+		SignalBus.restart_level.emit()
+	
+	if input_blocked:
+		return
+	
 	var dir := Vector2i.ZERO
 	if event.is_action_pressed("move_up"):
 		dir = Vector2i.UP
@@ -72,10 +80,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("Undo"):
 		undo_last()
-	
-	if event.is_action_pressed("RestartLevel"):
-		$Sounds/WhooshSound.play()
-		SignalBus.restart_level.emit()
 
 func _clone_sections() -> Array[Sprite2D]:
 	var arr: Array[Sprite2D] = []

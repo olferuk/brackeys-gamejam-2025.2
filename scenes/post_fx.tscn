@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://h658berpi7q2"]
+
+[ext_resource type="Script" uid="uid://gsx7fkk03ujt" path="res://src/ui/post_fx.gd" id="1_pb5on"]
+[ext_resource type="Shader" uid="uid://crrxg88gulgnx" path="res://src/shaders/gray.gdshader" id="1_pinm0"]
+[ext_resource type="AudioStream" uid="uid://cnpmh3bkro830" path="res://sfx/sad_trombone.wav" id="2_pb5on"]
+[ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="4_iggpv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlctk"]
+shader = ExtResource("1_pinm0")
+shader_parameter/tone_mix = 0.675
+shader_parameter/use_sepia = false
+shader_parameter/vignette_intensity = 0.855
+shader_parameter/vignette_softness = 1.0
+shader_parameter/vignette_center = Vector2(0.5, 0.715)
+shader_parameter/animation_len = 1.0
+shader_parameter/start_time = 0.0
+shader_parameter/is_active = false
+shader_parameter/radial_blur_strength = 0.005
+shader_parameter/radial_blur_samples = 5
+
+[sub_resource type="Animation" id="Animation_iggpv"]
+resource_name = "pop_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8pdp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_siwfc"]
+_data = {
+&"RESET": SubResource("Animation_8pdp2"),
+&"pop_up": SubResource("Animation_iggpv")
+}
+
+[node name="PostFx" type="CanvasLayer"]
+script = ExtResource("1_pb5on")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 100
+material = SubResource("ShaderMaterial_qlctk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pb5on")
+volume_db = -6.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+z_index = 200
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_iggpv")
+theme_override_font_sizes/font_size = 32
+text = "Press R to restart"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_siwfc")
+}

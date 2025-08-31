@@ -9,6 +9,7 @@ func _ready() -> void:
 	SignalBus.cell_visited.connect(Callable(self, "route"))
 	SignalBus.level_won.connect(Callable(self, "onto_next_level"))
 	SignalBus.level_lost.connect(Callable(self, "player_lose"))
+	SignalBus.restart_level.connect(Callable(self, "fx_off"))
 	
 	configure_hide_label()
 
@@ -22,7 +23,12 @@ func onto_next_level():
 	Transition.load_scene("res://scenes/levels/level05.tscn")
 
 func player_lose():
-	print("You HAVE FAILEEDDD")
+	$PostFx.play_postfx()
+	$Hound.input_blocked = true
+
+func fx_off():
+	$PostFx.stop_postfx()
+	$Hound.input_blocked = false
 
 func configure_hide_label():
 	var t = create_tween()

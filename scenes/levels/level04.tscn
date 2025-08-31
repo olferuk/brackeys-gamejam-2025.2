@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bcljcksx4bj4m"]
+[gd_scene load_steps=11 format=4 uid="uid://bcljcksx4bj4m"]
 
 [ext_resource type="Script" uid="uid://1maic7ahspal" path="res://src/levels/level_04.gd" id="1_gjd8t"]
 [ext_resource type="PackedScene" uid="uid://mdrq5w8asrmt" path="res://scenes/skybox.tscn" id="1_y1wi2"]
@@ -9,22 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://m508xm344dmu" path="res://scenes/objects/cookie.tscn" id="5_aoybf"]
 [ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="8_63ajt"]
 [ext_resource type="PackedScene" uid="uid://diuel85yw1g7m" path="res://scenes/ui/context_help/context_help_restart.tscn" id="9_qqxap"]
+[ext_resource type="PackedScene" uid="uid://h658berpi7q2" path="res://scenes/post_fx.tscn" id="10_wjpam"]
 
 [node name="Level04" type="Node2D"]
 script = ExtResource("1_gjd8t")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(384, 384)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-visible = false
-
-[node name="TextureRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Skybox" parent="." instance=ExtResource("1_y1wi2")]
 position = Vector2(-242, 40)
@@ -67,3 +55,5 @@ offset_right = 84.0
 offset_bottom = 31.0
 theme = ExtResource("8_63ajt")
 text = "HIDE HERE"
+
+[node name="PostFx" parent="." instance=ExtResource("10_wjpam")]

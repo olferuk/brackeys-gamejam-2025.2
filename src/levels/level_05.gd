@@ -21,4 +21,4 @@ func onto_next_level():
 	pass
 
 func player_lose():
-	print("You HAVE FAILEEDDD")
+	pass
