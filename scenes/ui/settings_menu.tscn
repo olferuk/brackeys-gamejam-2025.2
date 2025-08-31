@@ -1,9 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfh51kiodwg2w"]
+[gd_scene load_steps=8 format=3 uid="uid://cfh51kiodwg2w"]
 
 [ext_resource type="Script" uid="uid://cd52bsfpk2xnq" path="res://src/ui/settings_menu.gd" id="1_0b1cv"]
 [ext_resource type="PackedScene" uid="uid://2q1fn1j0qqqv" path="res://scenes/ui/menu_background.tscn" id="2_yu862"]
 [ext_resource type="Theme" uid="uid://kv5hrut8ubdx" path="res://vfx/dog_theme.tres" id="3_ywggk"]
 [ext_resource type="FontFile" uid="uid://cledngpla3142" path="res://vfx/fonts/Tanker-Regular.otf" id="4_ngbvi"]
+
+[sub_resource type="Animation" id="Animation_0b1cv"]
+resource_name = "pop"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_yu862"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywggk"]
+_data = {
+&"RESET": SubResource("Animation_yu862"),
+&"pop": SubResource("Animation_0b1cv")
+}
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -128,6 +166,35 @@ theme = ExtResource("3_ywggk")
 max_value = 1.0
 step = 0.01
 value = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("3_ywggk")
+theme_override_font_sizes/font_size = 16
+text = "Esc to return"
+
+[node name="Control" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer2"]
+libraries = {
+&"": SubResource("AnimationLibrary_ywggk")
+}
+autoplay = "pop"
 
 [connection signal="value_changed" from="VBoxContainer/MasterContainer/VBoxContainer/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/MusicContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]

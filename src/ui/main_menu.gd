@@ -21,6 +21,8 @@ func _ready() -> void:
 	new_game.mouse_exited.connect(_on_mouse_exited.bind(new_game))
 	settings.mouse_exited.connect(_on_mouse_exited.bind(settings))
 	exit.mouse_exited.connect(_on_mouse_exited.bind(exit))
+	
+	Consts.play_menu_music()
 
 func _on_mouse_entered(btn: Button) -> void:
 	_reset_tween()

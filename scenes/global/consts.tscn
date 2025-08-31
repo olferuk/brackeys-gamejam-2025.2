@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://wehuxepeu0og"]
+[gd_scene load_steps=3 format=3 uid="uid://wehuxepeu0og"]
 
 [ext_resource type="Script" uid="uid://bllwwflu5rxso" path="res://src/global/consts.gd" id="1_qhgiw"]
+[ext_resource type="AudioStream" uid="uid://dvp6c82mayndk" path="res://sfx/music/menu_music.mp3" id="2_1ih85"]
 
 [node name="Consts" type="Node"]
 script = ExtResource("1_qhgiw")
@@ -8,3 +9,12 @@ scene_main_menu = "res://scenes/ui/main_menu.tscn"
 scene_settings = "res://scenes/ui/settings_menu.tscn"
 scene_credits = "res://scenes/ui/credits.tscn"
 scene_level_01 = "res://scenes/levels/level01.tscn"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1ih85")
+volume_db = -8.0
+bus = &"Music"
+parameters/looping = false
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

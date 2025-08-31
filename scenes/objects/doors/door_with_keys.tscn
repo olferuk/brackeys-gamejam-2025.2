@@ -15,3 +15,4 @@ texture = ExtResource("2_c0bcw")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_c0bcw")
 volume_db = -6.0
+bus = &"SoundEffects"

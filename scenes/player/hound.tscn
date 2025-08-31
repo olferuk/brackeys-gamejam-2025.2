@@ -68,29 +68,38 @@ tile_set = SubResource("TileSet_p2wvy")
 [node name="StretchSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("4_iw5is")
 volume_db = -12.0
+bus = &"SoundEffects"
 
 [node name="ShrinkSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("5_p2wvy")
+bus = &"SoundEffects"
 
 [node name="ErrorSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("6_p2wvy")
+bus = &"SoundEffects"
 
 [node name="WhooshSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("7_owmm0")
+bus = &"SoundEffects"
 
 [node name="UndoSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_rvxoc")
+bus = &"SoundEffects"
 
 [node name="Steps" type="Node" parent="Sounds"]
 
 [node name="Steps1" type="AudioStreamPlayer" parent="Sounds/Steps"]
 stream = ExtResource("9_bjrvl")
+bus = &"SoundEffects"
 
 [node name="Steps2" type="AudioStreamPlayer" parent="Sounds/Steps"]
 stream = ExtResource("10_ds8yi")
+bus = &"SoundEffects"
 
 [node name="Steps3" type="AudioStreamPlayer" parent="Sounds/Steps"]
 stream = ExtResource("11_4ft3g")
+bus = &"SoundEffects"
 
 [node name="Steps4" type="AudioStreamPlayer" parent="Sounds/Steps"]
 stream = ExtResource("12_84yoy")
+bus = &"SoundEffects"

@@ -25,3 +25,4 @@ offset = Vector2(0, -16.845)
 
 [node name="CollectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_76smn")
+bus = &"SoundEffects"

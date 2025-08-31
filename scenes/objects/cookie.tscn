@@ -36,6 +36,8 @@ texture = ExtResource("5_melnk")
 [node name="WinBiinnnn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nehyt")
 volume_db = 6.0
+bus = &"SoundEffects"
 
 [node name="WinCrunch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_d6iuk")
+bus = &"SoundEffects"

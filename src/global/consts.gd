@@ -26,3 +26,8 @@ func get_scene_name(scene_name: SceneName) -> String:
 			return scene_level_01
 		_:
 			return ""
+
+func play_menu_music():
+	if $MenuMusic.playing:
+		return
+	$MenuMusic.play()
