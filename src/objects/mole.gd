@@ -27,11 +27,14 @@ func player_moved() -> void:
 			direction *= -1
 			$Icon.flip_h = false
 	else:
-		if _path_i == len(path)-1 and direction == Vector2i.RIGHT:
+		if _path_i == len(path) and direction == Vector2i.RIGHT:
 			_path_i = 0
-		if _path_i == 0 and direction == Vector2i.LEFT:
+		if _path_i == -1 and direction == Vector2i.LEFT:
 			_path_i = len(path)-1
 	
+	if _path_i > len(path) or _path_i < 0:
+		return
+
 	cell = path[_path_i]
 	position = Global.cell_size * path[_path_i] + Vector2(0, 16)
 	

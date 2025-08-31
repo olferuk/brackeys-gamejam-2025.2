@@ -9,7 +9,7 @@ func _ready() -> void:
 	SignalBus.cell_visited.connect(Callable(self, "route"))
 	SignalBus.level_won.connect(Callable(self, "onto_next_level"))
 	SignalBus.level_lost.connect(Callable(self, "player_lose"))
-	SignalBus.restart_level.connect(Callable(self, "fx_off"))
+	SignalBus.restart_level.connect(Callable(self, "restarted"))
 	
 	configure_hide_label()
 
@@ -26,7 +26,7 @@ func player_lose():
 	$PostFx.play_postfx()
 	$Hound.input_blocked = true
 
-func fx_off():
+func restarted():
 	$PostFx.stop_postfx()
 	$Hound.input_blocked = false
 

@@ -51,6 +51,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_iw5is")
 
 [node name="Hound" type="Node2D"]
+z_index = 100
 script = ExtResource("1_20k3t")
 body_schema = ExtResource("2_xekb5")
 
