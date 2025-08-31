@@ -52,7 +52,7 @@ path = Array[Vector2i]([Vector2i(4, 9), Vector2i(4, 8), Vector2i(5, 8), Vector2i
 move_type = "Cycled"
 
 [node name="DoorWithKeys" parent="Items" node_paths=PackedStringArray("keys") instance=ExtResource("6_phb8q")]
-position = Vector2(736, 552)
+position = Vector2(736, 416)
 keys = [NodePath("../Key")]
 
 [node name="MoleA" parent="Items" instance=ExtResource("5_mf5su")]
@@ -68,7 +68,7 @@ position = Vector2(1152, 768)
 path = Array[Vector2i]([Vector2i(18, 12), Vector2i(19, 12), Vector2i(20, 12), Vector2i(21, 12), Vector2i(22, 12), Vector2i(23, 12), Vector2i(24, 12)])
 
 [node name="Cookie" parent="Items" instance=ExtResource("9_ya4jn")]
-position = Vector2(160, 416)
+position = Vector2(1056, 608)
 
 [node name="Hound" parent="." instance=ExtResource("3_nwdue")]
 position = Vector2(0, 128)
