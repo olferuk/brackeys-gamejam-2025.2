@@ -10,6 +10,7 @@ func _init(dir: Vector2i) -> void:
 	direction = dir
 
 func execute(hound: Hound) -> bool:
+	CommandsManager.push([hound])  
 	prev_head_coords = hound.head_coords
 	prev_direction = hound.prev_direction
 	prev_occupied = hound.occupied_cells.duplicate(true)

@@ -78,8 +78,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		history.append(cmd)
 		$Sounds/ShrinkSound.play()
 	
-	if event.is_action_pressed("Undo"):
+	if event.is_action_pressed("undo"):
 		undo_last()
+
+func serialize_state() -> EntityState:
+	return EntityState.new(self, [
+		"occupied_cells",
+		"current_length",
+		"head_coords",
+		"prev_direction"
+	])
+
+func deserialize_state(state: EntityState) -> void:
+	state.restore(self)
+	_rebuild_sprites()
 
 func _clone_sections() -> Array[Sprite2D]:
 	var arr: Array[Sprite2D] = []
